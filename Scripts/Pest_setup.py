@@ -9,7 +9,7 @@ import flopy
 #Load paths
 name = 'pomp'
 PestDir = os.path.join('..','pest_files')
-mfexe = os.path.join('..','exe','mf6.exe')
+mfexe = os.path.join('..','exe','mf6')
 
 OrgDir = os.path.join('..', f'ws')
 master_dir = os.path.join('..',f'Master');

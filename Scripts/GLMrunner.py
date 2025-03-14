@@ -18,8 +18,8 @@ runstring = '1obs_for_optimum'
 if not os.path.isdir(os.path.join('..', runstring)): 
     os.mkdir(os.path.join('..', runstring))
 
-for sim in ['sim_70_0']:
-    for fac in [1,2,3]:
+for sim in ['sim_70_0', 'sim_141_0', 'sim_282_0']:
+    for fac in [0.5,1,2,3]:
         for angle in range(8):
             pst = pyemu.Pst(os.path.join(PestDir, 'eg.pst'))
             name = f'{fac}_{angle}'
