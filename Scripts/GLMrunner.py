@@ -40,25 +40,25 @@ for sim in ['sim_70_0']:
             pst.write(os.path.join(PestDir,'eg.pst'))
             pyemu.os_utils.run(f"{glm} eg.pst", os.path.join('..',"pest_files"))
 
-            # pst.control_data.noptmax = 7
-            # pst.pestpp_options['n_iter_super'] = 10
-            # pst.pestpp_options['n_iter_base'] = -1
-            # pst.pestpp_options['uncertainty'] = 0
-            # pst.svd_data.maxsing = pst.npar_adj
-            # os.chmod(os.path.join(PestDir,'forward_run.py'), 0o755)
-            # pst.write(os.path.join(PestDir,'eg.pst'))
-            # pyemu.os_utils.start_workers(os.path.join(PestDir), # the folder which contains the "template" PEST dataset
-            #                             os.path.join(glm), #the PEST software version we want to run
-            #                             'eg.pst', # the control file to use with PEST
-            #                             num_workers=8, #how many agents to deploy
-            #                             worker_root='..', #where to deploy the agent directories; relative to where python is running
-            #                             master_dir= master_dir,
-            #                             verbose = True
-            #                             )
+            pst.control_data.noptmax = 7
+            pst.pestpp_options['n_iter_super'] = 10
+            pst.pestpp_options['n_iter_base'] = -1
+            pst.pestpp_options['uncertainty'] = 0
+            pst.svd_data.maxsing = pst.npar_adj
+            os.chmod(os.path.join(PestDir,'forward_run.py'), 0o755)
+            pst.write(os.path.join(PestDir,'eg.pst'))
+            pyemu.os_utils.start_workers(os.path.join(PestDir), # the folder which contains the "template" PEST dataset
+                                        os.path.join(glm), #the PEST software version we want to run
+                                        'eg.pst', # the control file to use with PEST
+                                        num_workers=8, #how many agents to deploy
+                                        worker_root='..', #where to deploy the agent directories; relative to where python is running
+                                        master_dir= master_dir,
+                                        verbose = True
+                                        )
 
-            # pst.parrep(parfile=os.path.join(master_dir, 'eg.par'))
-            # pst.write_input_files(pst_path=master_dir)
-            # pyemu.os_utils.run('python forward_run.py', cwd=master_dir)
-            # shutil.move(master_dir, os.path.join('..',runstring,os.path.basename(master_dir)))
+            pst.parrep(parfile=os.path.join(master_dir, 'eg.par'))
+            pst.write_input_files(pst_path=master_dir)
+            pyemu.os_utils.run('python forward_run.py', cwd=master_dir)
+            shutil.move(master_dir, os.path.join('..',runstring,os.path.basename(master_dir)))
 
 # %%
