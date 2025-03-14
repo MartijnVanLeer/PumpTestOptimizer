@@ -13,12 +13,12 @@ gwf = sim.get_model('pomp')
 
 ## Generate random conductivity field(s) within zone
 n = 10
-len_scales = [75,150,300]
+len_scales = [70,141,282]
 mean = 10/400/24
 logvar = 1
 normalizer = gs.normalizer.LogNormal()
 for ls in len_scales:
-    model = gs.Gaussian(dim=2, var=logvar, len_scale=100)
+    model = gs.Gaussian(dim=2, var=logvar, len_scale=ls)
     srf = gs.SRF(model, seed=4524519, mean = normalizer.normalize(10/400/24)-logvar/2, normalizer = normalizer)
     seed = MasterRNG(20170519)
     for i in range(n):
