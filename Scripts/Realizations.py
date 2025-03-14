@@ -25,10 +25,4 @@ for ls in len_scales:
         field = srf((zonedf.x.values, zonedf.y.values), seed = seed())
         zonedf[f'sim_{ls}_{i}'] = np.where(zonedf.zone == True, field, 10/400/24)
 zonedf.to_csv(os.path.join('..', 'inter', 'Realizations.csv'), index_label = 'index')
-#%%#plot on grid
-r = 500
-pmv = flopy.plot.PlotMapView(gwf, extent = [-r, r, -r, r])
-pmv.plot_array((np.log(zonedf.sim_300_1)))
 
-
-# %%

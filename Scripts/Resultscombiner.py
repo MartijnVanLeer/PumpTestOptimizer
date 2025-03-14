@@ -35,14 +35,14 @@ fitdf['dirname'] = dirname
 fitdf['RMSE'] = RMSE
 fitdf.rename_axis('index', inplace = True)
 
-BaselineRMSE = np.sqrt(np.mean((np.log10(realdf.loc[:,simref]) - np.log10(0.001042))**2))
+BaselineRMSE = np.sqrt(((np.log10(realdf.loc[:,np.array(set(simref))]) - np.log10(0.001042))**2).mean())
 # fitdf.to_csv(os.path.join(folder,'RMSE.csv'))
 import matplotlib.pyplot as plt
 import seaborn as sns
 fig,ax = plt.subplots()
-# sns.boxplot(fitdf,x = 'welldist', y = 'RMSE', ax = ax, zorder = 3, showmeans = True)
-sns.scatterplot(fitdf,x = 'angle', y = 'RMSE',hue = 'welldist', ax = ax, zorder = 4)
-ax.hlines(BaselineRMSE, 0,7)
+sns.boxplot(fitdf[fitdf.corlen == 300],x = 'welldist', y = 'RMSE', ax = ax, zorder = 3, showmeans = True)
+sns.scatterplot(fitdf[fitdf.corlen == 300],x = 'welldist', y = 'RMSE',hue = 'corlen', ax = ax, zorder = 4)
+ax.hlines(BaselineRMSE, -0.5,4, color = 'red')
 # ax.set_xlabel('Distance observation well (r/λ)')
 # ax.legend('').remove()
 
