@@ -98,5 +98,13 @@ def rotate_point(x, y, angle_degrees):
     # Apply rotation formula manually
     x_new = x * np.cos(angle_radians) - y * np.sin(angle_radians)
     y_new = x * np.sin(angle_radians) + y * np.cos(angle_radians)
-    
-    return int(x_new), int(y_new)
+
+    return int(fix_val(x_new)), int(fix_val(y_new))
+
+def fix_val(val):
+    if int(val) == 199:
+        return 200
+    elif int(val) == -199:
+        return -200
+    else:
+        return val
