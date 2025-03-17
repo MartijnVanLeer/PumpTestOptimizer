@@ -70,6 +70,6 @@ for obsno in [2,3,4]:
                 pst.parrep(parfile=os.path.join(master_dir, 'eg.par'))
                 pst.write_input_files(pst_path=master_dir)
                 pyemu.os_utils.run('python forward_run.py', cwd=master_dir)
-                shutil.move(master_dir, os.path.join('..',runstring,os.path.basename(master_dir)))
+                shutil.move(master_dir, os.path.join('..','Results',runstring,os.path.basename(master_dir)))
 
 # %%
