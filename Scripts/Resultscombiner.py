@@ -21,6 +21,7 @@ angle = []
 obsno = []
 RMSE = []
 Fitted_corlen = []
+sills = []
 kfields = []
 RealK = []
 pestfiles = []
@@ -50,7 +51,8 @@ for folder in tqdm(runs, 'Reading files..'):
                     #calc RMSE of Kreal vs Kcal
                     RMSE.append(np.sqrt(np.mean((np.log10(realdf[simref[-1]].values) - np.log10(getk.values))**2)))
                     #fit variogram
-                    fitcorlen = VariogramFitting.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(getk.values[realdf.zone.values])),num_bins = 30)
+                    sill,fitcorlen = VariogramFitting.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(getk.values[realdf.zone.values])),num_bins = 30)
+                    sills.append(sill)
                     Fitted_corlen.append(fitcorlen)
 
 print('constructing netcdf..')

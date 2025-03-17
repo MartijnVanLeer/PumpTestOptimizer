@@ -104,4 +104,4 @@ def fit_gaussian_variogram(x, y, values, use_median=False, num_bins=20):
     popt, _ = curve_fit(gaussian_variogram_model, binned_distances, binned_semivariance, p0=initial_guess, bounds=(0, np.inf))
 
     sill, range_ = popt
-    return range_
+    return sill,range_
