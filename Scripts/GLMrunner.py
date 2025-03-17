@@ -3,7 +3,7 @@ import pyemu
 import os
 import pandas as pd
 import numpy as np
-from pest_funcs import rotate_point
+from pest_funcs import rotate_point, get_use_obs
 import shutil
 PestDir = os.path.join('..','pest_files')
 
@@ -14,7 +14,7 @@ realnames = realdf.columns[3:]
 glm = os.path.join('..','exe','pestpp-glm')
 
 SL = np.sqrt(20000)
-for obsno in [2,3,4]:
+for obsno in [3,5,6,7,8]:
     runstring = f'{obsno}obs'
 
     if not os.path.isdir(os.path.join('..', runstring)): 
@@ -29,15 +29,8 @@ for obsno in [2,3,4]:
 
                 #assign 'real' observations
                 angle -= 4 
-                useobs =  [(0,0),rotate_point(0,0.5*SL,angle*45)]
-                if obsno >= 2:
-                    useobs.append(rotate_point(0,SL,angle*45+90))
-                if obsno == 3:
-                    useobs.append(rotate_point(0,2*SL,angle*45+135))
-                if obsno >= 4:
-                    useobs.append(rotate_point(0,2*SL,angle*45+180))
-                    useobs.append(rotate_point(0,3*SL,angle*45-90))
-                useobs_str = [f'_{x}_{y}' for x, y in useobs] # make string from observation locs
+                useobs, useobs_str = get_use_obs(obsno, angle,SL)
+                 # make string from observation locs
                 #Change weights of observations to 0 except useobs
                 pst.observation_data['weight'] = pst.observation_data['obgnme'].apply(lambda x: 1 if any(x.endswith(s) for s in useobs_str) else 0)
                 assert pst.observation_data['weight'].value_counts()[1] == len(useobs)*100

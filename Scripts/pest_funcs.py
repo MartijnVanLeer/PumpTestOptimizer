@@ -102,9 +102,29 @@ def rotate_point(x, y, angle_degrees):
     return int(fix_val(x_new)), int(fix_val(y_new))
 
 def fix_val(val):
-    if int(val) == 199:
-        return 200
-    elif int(val) == -199:
-        return -200
+    if int(val) in [49,99, 199,299]:
+        return int(val)+1
+    elif int(val) in [-49,-99,-199,-299]:
+        return int(val)-1
     else:
-        return val
+        return int(val)
+    
+def get_use_obs(obsno, angle,SL):
+    useobs =  [(0,0),rotate_point(0,0.5*SL,angle*45)]
+    if obsno >= 2:
+        useobs.append(rotate_point(0,SL,angle*45+90))
+    if obsno == 3:
+        useobs.append(rotate_point(0,2*SL,angle*45-135))
+    if obsno >= 4:
+        useobs.append(rotate_point(0,2*SL,angle*45+180))
+        useobs.append(rotate_point(0,3*SL,angle*45-90))
+    if obsno >=5:
+        useobs.append(rotate_point(0,0.5*SL,angle*45-135))
+    if obsno >=6:
+        useobs.append(rotate_point(0,SL,angle*45-45))
+    if obsno >= 7:
+        useobs.append(rotate_point(0,2*SL,angle*45+45))
+    if obsno >= 8:
+        useobs.append(rotate_point(0,3*SL,angle*45+135))
+    useobs_str = [f'_{x}_{y}' for x, y in useobs]
+    return useobs, useobs_str
