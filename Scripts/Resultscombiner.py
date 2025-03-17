@@ -2,11 +2,11 @@
 import pandas as pd
 import os
 import numpy as np
-import pyemu
-import dill as pickle
+import VariogramFitting
 from tqdm import tqdm
 #Get 'real' realizations
 realdf = pd.read_csv(os.path.join('..', 'inter', 'Realizations.csv'), index_col = 'index')
+maskeddf = realdf[realdf.zone]
 #readfolder
 resultsdir = os.path.join('..', 'Results')
 runs = os.listdir(resultsdir)
@@ -20,6 +20,7 @@ simref = []
 angle = []
 obsno = []
 RMSE = []
+Fitted_corlen = []
 kfields = []
 RealK = []
 pestfiles = []
@@ -48,6 +49,9 @@ for folder in tqdm(runs, 'Reading files..'):
                     RealK.append(realdf[simref[-1]].values)
                     #calc RMSE of Kreal vs Kcal
                     RMSE.append(np.sqrt(np.mean((np.log10(realdf[simref[-1]].values) - np.log10(getk.values))**2)))
+                    #fit variogram
+                    fitcorlen = VariogramFitting.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(getk.values[realdf.zone.values])),num_bins = 30)
+                    Fitted_corlen.append(fitcorlen)
 
 print('constructing netcdf..')
 #assign lists to df
@@ -61,6 +65,7 @@ fitdf['dirname'] = np.array(dirname, dtype = 'str')
 fitdf['welldist'] = np.array(welldist,dtype= float)
 fitdf['pst'] = np.array(pestfiles, dtype = 'str') #save Pst objects as pickled
 fitdf['RMSE'] = RMSE
+fitdf['fitcorlen'] = Fitted_corlen
 fitdf.rename_axis('index', inplace = True)
 #construct xarray
 ds = fitdf.to_xarray()

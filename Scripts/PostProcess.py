@@ -15,11 +15,12 @@ ppdf =pd.read_csv(os.path.join('..', 'inter', 'ppdf.csv'), index_col = 'index')
 mfsim = flopy.mf6.MFSimulation.load(sim_ws=os.path.join('..', 'ws'), verbosity_level=0, lazy_io=True)
 gwf = mfsim.get_model()
 
+
 #%%
 ####################
 corlen = 141
 simno = 0
-obsno = 2
+obsno = 4
 angle = 0
 welldist = 0.5
 ###################
@@ -39,6 +40,8 @@ with tempfile.NamedTemporaryFile(delete=False, mode="w", suffix=".txt") as temp_
 
 obs_data = pst.observation_data
 
+
+#%%
 
 obs_data[['x','y']] = obs_data['obgnme'].str.split('_').str[-2:].apply(pd.Series)
 obs_data['x'] = obs_data['x'].astype(int)
