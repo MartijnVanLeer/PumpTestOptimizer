@@ -17,61 +17,56 @@ gwf = mfsim.get_model()
 
 
 #%%
+
 ####################
-corlen = 141
+corlen = 70
 simno = 0
-obsno = 4
+obsno = 5
 angle = 0
 welldist = 0.5
 ###################
+fig, axs = plt.subplots(2,3, dpi = 600,constrained_layout =True, sharex = True, sharey = True)
+axs = axs.ravel()
 
-sel = ds.where(ds.corlen == corlen,drop = True)
-sel = sel.where(ds.simno == simno,drop = True)
-sel = sel.where(ds.obsno == obsno,drop = True)
-sel = sel.where(ds.angle == angle,drop = True)
+for obsno in range(1,7):
+    ax = axs[obsno-1]
+    sel = ds.where(ds.corlen == corlen,drop = True)
+    sel = sel.where(ds.simno == simno,drop = True)
+    sel = sel.where(ds.obsno == obsno,drop = True)
+    sel = sel.where(ds.angle == angle,drop = True)
 
-if obsno == 1:
-    sel = sel.where(ds.welldist == welldist, drop = True)
+    if obsno == 1:
+        sel = sel.where(ds.welldist == welldist, drop = True)
+    vmin = min(min(np.log10(sel.RealK)))#,min(min(np.log10(sel.CalibratedK))))
+    vmax = max(max(np.log10(sel.RealK)))#,max(max(np.log10(sel.CalibratedK))))
+    #write pst file to temporary file to read with pyemu to create Pst object
+    with tempfile.NamedTemporaryFile(delete=False, mode="w", suffix=".txt") as temp_file:
+        temp_file.write(io.StringIO(sel.pst.values[0]).getvalue())
+        pst = pyemu.Pst(temp_file.name)
 
-#write pst file to temporary file to read with pyemu to create Pst object
-with tempfile.NamedTemporaryFile(delete=False, mode="w", suffix=".txt") as temp_file:
-    temp_file.write(io.StringIO(sel.pst.values[0]).getvalue())
-    pst = pyemu.Pst(temp_file.name)
+    obs_data = pst.observation_data
+    obs_data[['x','y']] = obs_data['obgnme'].str.split('_').str[-2:].apply(pd.Series)
+    obs_data['x'] = obs_data['x'].astype(int)
+    obs_data['y'] = obs_data['y'].astype(int)
+    plot_obs = obs_data[obs_data.weight == 1]
+    r = 500
 
-obs_data = pst.observation_data
-
-
-#%%
-
-obs_data[['x','y']] = obs_data['obgnme'].str.split('_').str[-2:].apply(pd.Series)
-obs_data['x'] = obs_data['x'].astype(int)
-obs_data['y'] = obs_data['y'].astype(int)
-plot_obs = obs_data[obs_data.weight == 1]
-fig, ax = plt.subplots(2,3, dpi = 600)
-fig.set_size_inches(10,7)
-diff = np.log10(sel.RealK) - np.log10(sel.CalibratedK)
-vmin = min(min(min(np.log10(sel.RealK))),min(min(np.log10(sel.CalibratedK))))
-vmax = max(max(max(np.log10(sel.RealK))),max(max(np.log10(sel.CalibratedK))))
-for no, r in enumerate([500, 250]):
-
-    cal = flopy.plot.PlotMapView(gwf, extent = [-r, r, -r, r], ax = ax[no,0])
+    cal = flopy.plot.PlotMapView(gwf, extent = [-r, r, -r, r], ax = ax)
     cal.plot_array(np.log10(sel.CalibratedK),vmin = vmin, vmax = vmax)
-    ax[no,0].set_title('Calibrated')
-    pmv = flopy.plot.PlotMapView(gwf, extent = [-r, r, -r, r], ax = ax[no,1])
-    pmv.plot_array(np.log10(sel.RealK),vmin = vmin, vmax = vmax)
-    ax[no,1].set_title('Real')
-    dif = flopy.plot.PlotMapView(gwf, extent = [-r, r, -r, r], ax = ax[no,2])
+    ax.set_aspect('equal')
+    ax.set_xticks([])
+    ax.set_yticks([])
 
-    dif.plot_array(abs(diff))
-    ax[no,2].set_title('Difference')
-
-for a in ax.flatten():
-    a.set_aspect('equal')
-    plot_obs.plot.scatter(x = 'x', y = 'y',ax =a, s = 1, color= 'red', zorder = 3)
-    ppdf.plot.scatter(x = 'x', y = 'y',ax =a, s = 1, color= 'white',zorder = 2)
-fig.tight_layout()
-
-
+    plot_obs.plot.scatter(x = 'x', y = 'y',ax =ax, s = 1, color= 'red', zorder = 3)
+    ax.set_title(round(sel.RMSE.values[0],3))
+    # ppdf.plot.scatter(x = 'x', y = 'y',ax =ax, s = 1, color= 'white',zorder = 2)
+    # fig.tight_layout()
+fig.subplots_adjust(hspace = 0.1, wspace = 0.1)
+#%%
+fig,ax = plt.subplots()
+pmv = flopy.plot.PlotMapView(gwf, extent = [-r, r, -r, r], ax = ax)
+pmv.plot_array(np.log10(sel.RealK),vmin = vmin, vmax = vmax)
+ax.set_aspect('equal')
 # %%
 import seaborn as sns
 fig, ax = plt.subplots(3,4, constrained_layout = True, sharex = True, sharey = 'row')

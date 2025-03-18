@@ -20,6 +20,10 @@ simref = []
 angle = []
 obsno = []
 RMSE = []
+NRMSE = []
+MAE = []
+r2 = []
+EV = []
 Fitted_corlen = []
 sills = []
 kfields = []
@@ -50,6 +54,10 @@ for folder in tqdm(runs, 'Reading files..'):
                     RealK.append(realdf[simref[-1]].values)
                     #calc RMSE of Kreal vs Kcal
                     RMSE.append(np.sqrt(np.mean((np.log10(realdf[simref[-1]].values) - np.log10(getk.values))**2)))
+                    NRMSE.append(RMSE[-1]/np.std(np.log10(getk.values)))
+                    MAE.append(np.mean(abs(np.log10(realdf[simref[-1]].values) - np.log10(getk.values))))
+                    r2.append(VariogramFitting.calculate_r2(np.log10(realdf[simref[-1]].values), np.log10(getk.values)))
+                    EV.append(VariogramFitting.explained_variance_score(np.log10(realdf[simref[-1]].values), np.log10(getk.values)))
                     #fit variogram
                     sill,fitcorlen = VariogramFitting.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(getk.values[realdf.zone.values])),num_bins = 30)
                     sills.append(sill)
@@ -67,6 +75,10 @@ fitdf['dirname'] = np.array(dirname, dtype = 'str')
 fitdf['welldist'] = np.array(welldist,dtype= float)
 fitdf['pst'] = np.array(pestfiles, dtype = 'str') #save Pst objects as pickled
 fitdf['RMSE'] = RMSE
+fitdf['NRMSE'] = NRMSE
+fitdf['MAE'] = MAE
+fitdf['R²'] = r2
+fitdf['EV'] =EV
 fitdf['fitcorlen'] = Fitted_corlen
 fitdf['sill'] = sills
 fitdf.rename_axis('index', inplace = True)

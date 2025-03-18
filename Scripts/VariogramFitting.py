@@ -105,3 +105,59 @@ def fit_gaussian_variogram(x, y, values, use_median=False, num_bins=20):
 
     sill, range_ = popt
     return sill,range_
+
+def calculate_r2(observed, predicted):
+    """
+    Calculate the coefficient of determination (R²) between observed and predicted values.
+
+    Parameters:
+    observed (list or numpy array): The true values.
+    predicted (list or numpy array): The predicted values.
+
+    Returns:
+    float: The R² value.
+    """
+    # Convert to numpy arrays if needed
+    import numpy as np
+    observed = np.array(observed)
+    predicted = np.array(predicted)
+    
+    # Calculate the mean of observed values
+    mean_observed = np.mean(observed)
+    
+    # Total sum of squares (SStot)
+    ss_tot = np.sum((observed - mean_observed) ** 2)
+    
+    # Residual sum of squares (SSres)
+    ss_res = np.sum((observed - predicted) ** 2)
+    
+    # Calculate R²
+    r2 = 1 - (ss_res / ss_tot)
+    return r2
+
+
+def explained_variance_score(observed, predicted):
+    """
+    Calculate the Explained Variance Score between observed and predicted values.
+
+    Parameters:
+    observed (list or numpy array): The ground truth (observed values).
+    predicted (list or numpy array): The predicted values.
+
+    Returns:
+    float: The Explained Variance Score.
+    """
+    # Convert to numpy arrays if not already
+    observed = np.array(observed)
+    predicted = np.array(predicted)
+    
+    # Calculate the variance of the residuals (observed - predicted)
+    residual_variance = np.var(observed - predicted)
+    
+    # Calculate the variance of the observed values
+    observed_variance = np.var(observed)
+    
+    # Compute the Explained Variance Score
+    explained_variance = 1 - (residual_variance / observed_variance)
+    
+    return explained_variance
