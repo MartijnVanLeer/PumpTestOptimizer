@@ -68,6 +68,7 @@ fitdf['welldist'] = np.array(welldist,dtype= float)
 fitdf['pst'] = np.array(pestfiles, dtype = 'str') #save Pst objects as pickled
 fitdf['RMSE'] = RMSE
 fitdf['fitcorlen'] = Fitted_corlen
+fitdf['sill'] = sills
 fitdf.rename_axis('index', inplace = True)
 #construct xarray
 ds = fitdf.to_xarray()

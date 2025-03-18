@@ -73,3 +73,25 @@ fig.tight_layout()
 
 
 # %%
+import seaborn as sns
+fig, ax = plt.subplots(3,4, constrained_layout = True, sharex = True, sharey = 'row')
+fig.set_size_inches(7,6)
+df = ds[['RMSE','obsno', 'fitcorlen','sill','simno','corlen']].to_dataframe().reset_index()
+df =df[df.obsno > 1]
+for i,metric in enumerate(['RMSE','fitcorlen', 'sill']):
+    for j,corlen in enumerate([70,141,282]):
+        sns.stripplot(df[df.corlen == corlen], x = 'obsno',y = metric,hue = 'simno',
+                      s = 3,ax = ax[i,j], dodge = False, alpha = 0.5, edgecolor = 'black')
+        ax[i,j].legend().remove()
+        if i == 0:
+            ax[i,j].set_title(f'L = {corlen}')
+    sns.stripplot(df, x = 'obsno',y = metric,hue = 'corlen',ax = ax[i,3], s = 3)
+    ax[i,3].legend().remove()
+ax[0,3].set_title('All')
+
+
+
+
+
+
+# %%
