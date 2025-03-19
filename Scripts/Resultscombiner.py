@@ -85,7 +85,7 @@ fitdf['sill'] = sills
 fitdf.rename_axis('index', inplace = True)
 #construct xarray
 ds = fitdf.to_xarray()
-ds = ds.assign_coords(cellid = range(len(getk.values))) #cellid for realizations
+ds = ds.assign_coords(cellid = range(len(getk))) #cellid for realizations
 kfieldsfix = np.array(kfields)
 realkfix = np.array(RealK)
 ds['CalibratedK'] = (['index', 'cellid'], kfieldsfix)
