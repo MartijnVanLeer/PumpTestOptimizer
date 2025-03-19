@@ -45,7 +45,8 @@ for folder in tqdm(runs, 'Reading files..'):
                     dirname.append(dir)
                     #read calibrated K
                     getk = pd.read_csv(os.path.join(resultsdir, folder,dir,'pomp.npf_k_layer2.txt'), sep = '   ', header= None, engine = 'python').T
-                    kfields.append(getk.values)
+                    getk = getk[0].values
+                    kfields.append(getk)
                     #read pest files for all runinfo
                     pestfile = (os.path.join(resultsdir, folder,dir,'eg.pst'))
                     with open(pestfile, 'r') as file:
@@ -53,13 +54,13 @@ for folder in tqdm(runs, 'Reading files..'):
                     #assign only modelled RealK to list
                     RealK.append(realdf[simref[-1]].values)
                     #calc RMSE of Kreal vs Kcal
-                    RMSE.append(np.sqrt(np.mean((np.log10(realdf[simref[-1]].values) - np.log10(getk.values))**2)))
-                    NRMSE.append(RMSE[-1]/np.std(np.log10(getk.values)))
-                    MAE.append(np.mean(abs(np.log10(realdf[simref[-1]].values) - np.log10(getk.values))))
-                    r2.append(VariogramFitting.calculate_r2(np.log10(realdf[simref[-1]].values), np.log10(getk.values)))
-                    VarRatio.append(np.var(np.log10(realdf[simref[-1]].values))/np.var(np.log10(getk.values)))
+                    RMSE.append(np.sqrt(np.mean((np.log10(realdf[simref[-1]].values) - np.log10(getk))**2)))
+                    NRMSE.append(RMSE[-1]/np.std(np.log10(getk)))
+                    MAE.append(np.mean(abs(np.log10(realdf[simref[-1]].values) - np.log10(getk))))
+                    r2.append(VariogramFitting.calculate_r2(np.log10(realdf[simref[-1]].values), np.log10(getk)))
+                    VarRatio.append(np.var(np.log10(realdf[simref[-1]].values))/np.var(np.log10(getk)))
                     #fit variogram
-                    sill,fitcorlen = VariogramFitting.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(getk.values[realdf.zone.values])),num_bins = 30)
+                    sill,fitcorlen = VariogramFitting.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(getk[realdf.zone.values])),num_bins = 30)
                     sills.append(sill)
                     Fitted_corlen.append(fitcorlen)
 
@@ -85,7 +86,7 @@ fitdf.rename_axis('index', inplace = True)
 #construct xarray
 ds = fitdf.to_xarray()
 ds = ds.assign_coords(cellid = range(len(getk.values))) #cellid for realizations
-kfieldsfix = np.array(kfields)[:,:,0]
+kfieldsfix = np.array(kfields)
 realkfix = np.array(RealK)
 ds['CalibratedK'] = (['index', 'cellid'], kfieldsfix)
 ds['RealK'] = (['index', 'cellid'], realkfix)
