@@ -23,7 +23,7 @@ RMSE = []
 NRMSE = []
 MAE = []
 r2 = []
-EV = []
+VarRatio = []
 Fitted_corlen = []
 sills = []
 kfields = []
@@ -57,7 +57,7 @@ for folder in tqdm(runs, 'Reading files..'):
                     NRMSE.append(RMSE[-1]/np.std(np.log10(getk.values)))
                     MAE.append(np.mean(abs(np.log10(realdf[simref[-1]].values) - np.log10(getk.values))))
                     r2.append(VariogramFitting.calculate_r2(np.log10(realdf[simref[-1]].values), np.log10(getk.values)))
-                    EV.append(VariogramFitting.explained_variance_score(np.log10(realdf[simref[-1]].values), np.log10(getk.values)))
+                    VarRatio.append(np.var(np.log10(realdf[simref[-1]].values))/np.var(np.log10(getk.values)))
                     #fit variogram
                     sill,fitcorlen = VariogramFitting.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(getk.values[realdf.zone.values])),num_bins = 30)
                     sills.append(sill)
@@ -78,7 +78,7 @@ fitdf['RMSE'] = RMSE
 fitdf['NRMSE'] = NRMSE
 fitdf['MAE'] = MAE
 fitdf['R²'] = r2
-fitdf['EV'] =EV
+fitdf['VarRatio'] =VarRatio
 fitdf['fitcorlen'] = Fitted_corlen
 fitdf['sill'] = sills
 fitdf.rename_axis('index', inplace = True)

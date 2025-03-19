@@ -14,7 +14,7 @@ realnames = realdf.columns[3:]
 glm = os.path.join('..','exe','pestpp-glm')
 
 SL = np.sqrt(20000)
-for obsno in [3,5,6,7,8]:
+for obsno in range(9,17):
     runstring = f'{obsno}obs'
 
     if not os.path.isdir(os.path.join('..', runstring)): 

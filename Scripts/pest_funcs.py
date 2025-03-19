@@ -126,5 +126,26 @@ def get_use_obs(obsno, angle,SL):
         useobs.append(rotate_point(0,2*SL,angle*45+45))
     if obsno >= 8:
         useobs.append(rotate_point(0,3*SL,angle*45+135))
+    if obsno >=9:
+        useobs.append(rotate_point(0,3*SL,angle*45))
+    if obsno >= 10:
+        useobs.append(rotate_point(0,2*SL,angle*45+90))
+    if obsno >= 11:
+        useobs.append(rotate_point(0,SL,angle*45+180))
+    if obsno >= 12:
+        useobs.append(rotate_point(0,2*SL,angle*45-90))
+    if obsno >=13:
+        useobs.append(rotate_point(0,3*SL,angle*45-135))
+    if obsno >=14:
+        useobs.append(rotate_point(0,2*SL,angle*45-45))
+    if obsno >= 15:
+        useobs.append(rotate_point(0,0.5*SL,angle*45+45))
+    if obsno >= 16:
+        useobs.append(rotate_point(0,2*SL,angle*45+135))
     useobs_str = [f'_{x}_{y}' for x, y in useobs]
     return useobs, useobs_str
+
+def plot_use_obs(useobs):
+    import matplotlib.pyplot as plt
+    x,y = zip(*useobs)
+    plt.scatter(x,y,alpha = 0.5)

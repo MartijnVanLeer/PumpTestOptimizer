@@ -19,16 +19,16 @@ gwf = mfsim.get_model()
 #%%
 
 ####################
-corlen = 70
+corlen = 141
 simno = 0
 obsno = 5
 angle = 0
 welldist = 0.5
 ###################
-fig, axs = plt.subplots(2,3, dpi = 600,constrained_layout =True, sharex = True, sharey = True)
+fig, axs = plt.subplots(2,4, dpi = 600,constrained_layout =True, sharex = True, sharey = True)
 axs = axs.ravel()
 
-for obsno in range(1,7):
+for obsno in range(1,9):
     ax = axs[obsno-1]
     sel = ds.where(ds.corlen == corlen,drop = True)
     sel = sel.where(ds.simno == simno,drop = True)
@@ -69,18 +69,27 @@ pmv.plot_array(np.log10(sel.RealK),vmin = vmin, vmax = vmax)
 ax.set_aspect('equal')
 # %%
 import seaborn as sns
-fig, ax = plt.subplots(3,4, constrained_layout = True, sharex = True, sharey = 'row')
-fig.set_size_inches(7,6)
-df = ds[['RMSE','obsno', 'fitcorlen','sill','simno','corlen']].to_dataframe().reset_index()
+fig, ax = plt.subplots(7,4, constrained_layout = True, sharex = True, sharey = 'row')
+fig.set_size_inches(7,12)
+df = ds[['RMSE','NRMSE','EV','MAE','R²','obsno', 'fitcorlen','sill','simno','corlen']].to_dataframe().reset_index()
 df =df[df.obsno > 1]
-for i,metric in enumerate(['RMSE','fitcorlen', 'sill']):
+sargs = {'s' : 3}
+for i,metric in enumerate(['RMSE','NRMSE','MAE','R²','fitcorlen', 'sill','EV']):
     for j,corlen in enumerate([70,141,282]):
-        sns.stripplot(df[df.corlen == corlen], x = 'obsno',y = metric,hue = 'simno',
-                      s = 3,ax = ax[i,j], dodge = False, alpha = 0.5, edgecolor = 'black')
+        sns.scatterplot(df[df.corlen == corlen], x = 'obsno',y = metric,hue = 'simno',
+                      s = 15,ax = ax[i,j], alpha = 0.5, edgecolor = 'black')
+        sns.regplot(df[df.corlen == corlen], x = 'obsno',y = metric,lowess=True, 
+                    ax = ax[i,j], scatter = False, truncate = True, line_kws={'linewidth' : 1, 'color' : 'red'})
         ax[i,j].legend().remove()
         if i == 0:
             ax[i,j].set_title(f'L = {corlen}')
-    sns.stripplot(df, x = 'obsno',y = metric,hue = 'corlen',ax = ax[i,3], s = 3)
+        if metric == 'fitcorlen':
+            ax[i,j].hlines(corlen, 1,df.obsno.max(), linestyle = '--',color = 'black')
+    sns.scatterplot(df, x = 'obsno',y = metric,hue = 'corlen',
+                ax = ax[i,3], s = 15,alpha = 0.5)
+    
+    sns.regplot(df, x = 'obsno',y = metric,lowess=True, scatter = False, 
+                ax = ax[i,3], truncate = True, line_kws={'linewidth' : 1, 'color' : 'red'})
     ax[i,3].legend().remove()
 ax[0,3].set_title('All')
 
