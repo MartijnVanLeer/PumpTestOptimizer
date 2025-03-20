@@ -2,7 +2,7 @@
 import pandas as pd
 import os
 import numpy as np
-import functions.ErrorMetrics
+from functions import ErrorMetrics
 from tqdm import tqdm
 #Get 'real' realizations
 realdf = pd.read_csv(os.path.join('..', 'inter', 'Realizations.csv'), index_col = 'index')

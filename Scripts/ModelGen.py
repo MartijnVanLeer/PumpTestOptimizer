@@ -34,7 +34,7 @@ Tlen = 8 #Time (h)
 Tsteps = 50 #Timesteps 
 Tmult = 1.05 #Time multiplier
 
-VG,GI,gridprops,tri = MakeGrid(os.path.join('..', 'grid'), radius, max_area, areas, dists)
+VG,GI,gridprops = MakeGrid(os.path.join('..', 'grid'), radius, max_area, areas, dists)
 # PlotGrid(VG, zonedist, ObsR)
 
 ws = os.path.join('..', f'ws')
