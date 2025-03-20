@@ -29,6 +29,7 @@ sills = []
 kfields = []
 RealK = []
 pestfiles = []
+CorLenError = []
 #read pest run folders and append to lists
 for folder in tqdm(runs, 'Reading files..'):
         for subdir, dirs, files in os.walk(os.path.join(resultsdir, folder)):
@@ -63,6 +64,7 @@ for folder in tqdm(runs, 'Reading files..'):
                     sill,fitcorlen = VariogramFitting.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(getk[realdf.zone.values])),num_bins = 30)
                     sills.append(sill)
                     Fitted_corlen.append(fitcorlen)
+                    CorLenError.append((int(simcorlen)-fitcorlen)/int(simcorlen))
 
 print('constructing netcdf..')
 #assign lists to df
