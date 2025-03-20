@@ -37,7 +37,7 @@ for folder in tqdm(runs, 'Reading files..'):
                     simcorlen.append(dir.split('_')[2])
                     simno.append(dir.split('_')[3])
                     simref.append(f'sim_{simcorlen[-1]}_{simno[-1]}')
-                    obsno.append(folder[0])
+                    obsno.append(folder.split('o')[0])
                     wd =dir.split('_')[4]
                     wd = None if wd == '' else wd #only 1obs has this value
                     welldist.append(wd)
