@@ -1,0 +1,698 @@
+2025-03-13 09:14:55.223255 starting: opening PstFrom.log for logging
+2025-03-13 09:14:55.223255 starting PstFrom process
+2025-03-13 09:14:55.223255 dictionary-based spatial reference detected...
+2025-03-13 09:14:55.223255 starting: setting up dirs
+2025-03-13 09:14:55.224253 starting: removing existing new_d '..\pest_files'
+2025-03-13 09:14:55.322610 finished: removing existing new_d '..\pest_files' took: 0:00:00.098357
+2025-03-13 09:14:55.322610 starting: copying original_d '..\ws' to new_d '..\pest_files'
+2025-03-13 09:14:56.264484 finished: copying original_d '..\ws' to new_d '..\pest_files' took: 0:00:00.941874
+2025-03-13 09:14:56.266482 finished: setting up dirs took: 0:00:01.043227
+2025-03-13 09:14:56.295703 starting: adding pilotpoints type m style parameters for file(s) ['pomp.npf_k_layer2.txt']
+2025-03-13 09:14:56.295703 starting: using geostruct:name:struct1,nugget:0.0,structures:
+name:var1,contribution:1.0,a:282.0,anisotropy:1.0,bearing:0.0
+
+2025-03-13 09:14:56.295703 starting: loading array ..\pest_files\pomp.npf_k_layer2.txt
+2025-03-13 09:14:56.368591 finished: loading array ..\pest_files\pomp.npf_k_layer2.txt took: 0:00:00.072888
+2025-03-13 09:14:56.368591 loaded array '..\ws\pomp.npf_k_layer2.txt' of shape (12433, 1)
+2025-03-13 09:14:56.400980 starting: writing array-style template file '..\pest_files\p_inst0_pilotpoints.csv.tpl'
+2025-03-13 09:14:56.400980 starting: setting up pilot point parameters
+2025-03-13 09:14:56.400980 'use_pp_zones' not set in pp_options, Setting to default value: [False]
+2025-03-13 09:14:56.400980 'spatial_reference' not set in pp_options, Setting to default value: [None]
+2025-03-13 09:14:56.400980 'minpts_interp' not set in pp_options, Setting to default value: [1]
+2025-03-13 09:14:56.400980 'fill_value' not set in pp_options, Setting to default value: [1.0]
+2025-03-13 09:14:56.400980 'lower_limit' not set in pp_options, Setting to default value: [1e-30]
+2025-03-13 09:14:56.400980 'upper_limit' not set in pp_options, Setting to default value: [1e+30]
+2025-03-13 09:14:56.400980 No spatial reference (containing cell spacing) passed.
+2025-03-13 09:14:56.400980 OK - using spatial reference in parent object.
+2025-03-13 09:14:56.420219 97 pilot point parameters created
+2025-03-13 09:14:56.421220 pilot point 'pargp':p,_,i,n,s,t,:,0
+2025-03-13 09:14:56.421220 finished: setting up pilot point parameters took: 0:00:00.020240
+2025-03-13 09:14:56.455649 starting: calculating factors for pargp=p_inst:0
+2025-03-13 09:14:56.455649 saving krige variance file:..\pest_files\p_inst0pp.var.dat
+2025-03-13 09:14:56.455649 saving krige factors file:..\pest_files\p_inst0pp.fac
+2025-03-13 09:15:34.421397 finished: calculating factors for pargp=p_inst:0 took: 0:00:37.965748
+2025-03-13 09:15:34.422402 starting: writing array-based template file '..\pest_files\p_inst0pp.dat.tpl'
+2025-03-13 09:15:34.422402 saving zone array ..\pest_files\p_inst0pp.dat.zone for tpl file ..\pest_files\p_inst0pp.dat.tpl
+2025-03-13 09:15:34.441084 finished: adding pilotpoints type m style parameters for file(s) ['pomp.npf_k_layer2.txt'] took: 0:00:38.145381
+2025-03-13 09:15:34.450195 starting: adding observations from output file head_0_-100_-100
+2025-03-13 09:15:34.450195 starting: adding observations from tabular output file '['head_0_-100_-100']'
+2025-03-13 09:15:34.451197 starting: reading list-style file: ..\pest_files\head_0_-100_-100
+2025-03-13 09:15:34.455191 finished: reading list-style file: ..\pest_files\head_0_-100_-100 took: 0:00:00.003994
+2025-03-13 09:15:34.455191 starting: building insfile for tabular output file head_0_-100_-100
+2025-03-13 09:15:34.464591 finished: building insfile for tabular output file head_0_-100_-100 took: 0:00:00.009400
+2025-03-13 09:15:34.464591 starting: adding observation from instruction file '..\pest_files\head_0_-100_-100.ins'
+2025-03-13 09:15:34.481820 finished: adding observation from instruction file '..\pest_files\head_0_-100_-100.ins' took: 0:00:00.017229
+2025-03-13 09:15:34.482820 finished: adding observations from tabular output file '['head_0_-100_-100']' took: 0:00:00.032625
+2025-03-13 09:15:34.482820 finished: adding observations from output file head_0_-100_-100 took: 0:00:00.032625
+2025-03-13 09:15:34.482820 starting: adding observations from output file head_0_-100_100
+2025-03-13 09:15:34.482820 starting: adding observations from tabular output file '['head_0_-100_100']'
+2025-03-13 09:15:34.483820 starting: reading list-style file: ..\pest_files\head_0_-100_100
+2025-03-13 09:15:34.485820 finished: reading list-style file: ..\pest_files\head_0_-100_100 took: 0:00:00.002000
+2025-03-13 09:15:34.486820 starting: building insfile for tabular output file head_0_-100_100
+2025-03-13 09:15:34.490820 finished: building insfile for tabular output file head_0_-100_100 took: 0:00:00.004000
+2025-03-13 09:15:34.491821 starting: adding observation from instruction file '..\pest_files\head_0_-100_100.ins'
+2025-03-13 09:15:34.507865 finished: adding observation from instruction file '..\pest_files\head_0_-100_100.ins' took: 0:00:00.016044
+2025-03-13 09:15:34.508370 finished: adding observations from tabular output file '['head_0_-100_100']' took: 0:00:00.025550
+2025-03-13 09:15:34.508370 finished: adding observations from output file head_0_-100_100 took: 0:00:00.025550
+2025-03-13 09:15:34.508370 starting: adding observations from output file head_0_-141_0
+2025-03-13 09:15:34.508370 starting: adding observations from tabular output file '['head_0_-141_0']'
+2025-03-13 09:15:34.508370 starting: reading list-style file: ..\pest_files\head_0_-141_0
+2025-03-13 09:15:34.511531 finished: reading list-style file: ..\pest_files\head_0_-141_0 took: 0:00:00.003161
+2025-03-13 09:15:34.512035 starting: building insfile for tabular output file head_0_-141_0
+2025-03-13 09:15:34.515557 finished: building insfile for tabular output file head_0_-141_0 took: 0:00:00.003522
+2025-03-13 09:15:34.517040 starting: adding observation from instruction file '..\pest_files\head_0_-141_0.ins'
+2025-03-13 09:15:34.532564 finished: adding observation from instruction file '..\pest_files\head_0_-141_0.ins' took: 0:00:00.015524
+2025-03-13 09:15:34.533767 finished: adding observations from tabular output file '['head_0_-141_0']' took: 0:00:00.025397
+2025-03-13 09:15:34.533767 finished: adding observations from output file head_0_-141_0 took: 0:00:00.025397
+2025-03-13 09:15:34.533767 starting: adding observations from output file head_0_-200_-200
+2025-03-13 09:15:34.533767 starting: adding observations from tabular output file '['head_0_-200_-200']'
+2025-03-13 09:15:34.534271 starting: reading list-style file: ..\pest_files\head_0_-200_-200
+2025-03-13 09:15:34.536723 finished: reading list-style file: ..\pest_files\head_0_-200_-200 took: 0:00:00.002452
+2025-03-13 09:15:34.537733 starting: building insfile for tabular output file head_0_-200_-200
+2025-03-13 09:15:34.540733 finished: building insfile for tabular output file head_0_-200_-200 took: 0:00:00.003000
+2025-03-13 09:15:34.542228 starting: adding observation from instruction file '..\pest_files\head_0_-200_-200.ins'
+2025-03-13 09:15:34.556233 finished: adding observation from instruction file '..\pest_files\head_0_-200_-200.ins' took: 0:00:00.014005
+2025-03-13 09:15:34.557232 finished: adding observations from tabular output file '['head_0_-200_-200']' took: 0:00:00.023465
+2025-03-13 09:15:34.557232 finished: adding observations from output file head_0_-200_-200 took: 0:00:00.023465
+2025-03-13 09:15:34.557232 starting: adding observations from output file head_0_-200_200
+2025-03-13 09:15:34.557232 starting: adding observations from tabular output file '['head_0_-200_200']'
+2025-03-13 09:15:34.557232 starting: reading list-style file: ..\pest_files\head_0_-200_200
+2025-03-13 09:15:34.560233 finished: reading list-style file: ..\pest_files\head_0_-200_200 took: 0:00:00.003001
+2025-03-13 09:15:34.560233 starting: building insfile for tabular output file head_0_-200_200
+2025-03-13 09:15:34.564252 finished: building insfile for tabular output file head_0_-200_200 took: 0:00:00.004019
+2025-03-13 09:15:34.564252 starting: adding observation from instruction file '..\pest_files\head_0_-200_200.ins'
+2025-03-13 09:15:34.579992 finished: adding observation from instruction file '..\pest_files\head_0_-200_200.ins' took: 0:00:00.015740
+2025-03-13 09:15:34.580992 finished: adding observations from tabular output file '['head_0_-200_200']' took: 0:00:00.023760
+2025-03-13 09:15:34.580992 finished: adding observations from output file head_0_-200_200 took: 0:00:00.023760
+2025-03-13 09:15:34.580992 starting: adding observations from output file head_0_-282_0
+2025-03-13 09:15:34.580992 starting: adding observations from tabular output file '['head_0_-282_0']'
+2025-03-13 09:15:34.580992 starting: reading list-style file: ..\pest_files\head_0_-282_0
+2025-03-13 09:15:34.582991 finished: reading list-style file: ..\pest_files\head_0_-282_0 took: 0:00:00.001999
+2025-03-13 09:15:34.583991 starting: building insfile for tabular output file head_0_-282_0
+2025-03-13 09:15:34.587995 finished: building insfile for tabular output file head_0_-282_0 took: 0:00:00.004004
+2025-03-13 09:15:34.587995 starting: adding observation from instruction file '..\pest_files\head_0_-282_0.ins'
+2025-03-13 09:15:34.603592 finished: adding observation from instruction file '..\pest_files\head_0_-282_0.ins' took: 0:00:00.015597
+2025-03-13 09:15:34.604622 finished: adding observations from tabular output file '['head_0_-282_0']' took: 0:00:00.023630
+2025-03-13 09:15:34.604622 finished: adding observations from output file head_0_-282_0 took: 0:00:00.023630
+2025-03-13 09:15:34.604622 starting: adding observations from output file head_0_-300_-300
+2025-03-13 09:15:34.604622 starting: adding observations from tabular output file '['head_0_-300_-300']'
+2025-03-13 09:15:34.605641 starting: reading list-style file: ..\pest_files\head_0_-300_-300
+2025-03-13 09:15:34.607193 finished: reading list-style file: ..\pest_files\head_0_-300_-300 took: 0:00:00.001552
+2025-03-13 09:15:34.608387 starting: building insfile for tabular output file head_0_-300_-300
+2025-03-13 09:15:34.611899 finished: building insfile for tabular output file head_0_-300_-300 took: 0:00:00.003512
+2025-03-13 09:15:34.611899 starting: adding observation from instruction file '..\pest_files\head_0_-300_-300.ins'
+2025-03-13 09:15:34.627419 finished: adding observation from instruction file '..\pest_files\head_0_-300_-300.ins' took: 0:00:00.015520
+2025-03-13 09:15:34.628419 finished: adding observations from tabular output file '['head_0_-300_-300']' took: 0:00:00.023797
+2025-03-13 09:15:34.628419 finished: adding observations from output file head_0_-300_-300 took: 0:00:00.023797
+2025-03-13 09:15:34.628419 starting: adding observations from output file head_0_-300_300
+2025-03-13 09:15:34.628419 starting: adding observations from tabular output file '['head_0_-300_300']'
+2025-03-13 09:15:34.628419 starting: reading list-style file: ..\pest_files\head_0_-300_300
+2025-03-13 09:15:34.631420 finished: reading list-style file: ..\pest_files\head_0_-300_300 took: 0:00:00.003001
+2025-03-13 09:15:34.632418 starting: building insfile for tabular output file head_0_-300_300
+2025-03-13 09:15:34.636436 finished: building insfile for tabular output file head_0_-300_300 took: 0:00:00.004018
+2025-03-13 09:15:34.636436 starting: adding observation from instruction file '..\pest_files\head_0_-300_300.ins'
+2025-03-13 09:15:34.652223 finished: adding observation from instruction file '..\pest_files\head_0_-300_300.ins' took: 0:00:00.015787
+2025-03-13 09:15:34.653223 finished: adding observations from tabular output file '['head_0_-300_300']' took: 0:00:00.024804
+2025-03-13 09:15:34.653223 finished: adding observations from output file head_0_-300_300 took: 0:00:00.024804
+2025-03-13 09:15:34.653223 starting: adding observations from output file head_0_-424_0
+2025-03-13 09:15:34.653223 starting: adding observations from tabular output file '['head_0_-424_0']'
+2025-03-13 09:15:34.653223 starting: reading list-style file: ..\pest_files\head_0_-424_0
+2025-03-13 09:15:34.656229 finished: reading list-style file: ..\pest_files\head_0_-424_0 took: 0:00:00.003006
+2025-03-13 09:15:34.656229 starting: building insfile for tabular output file head_0_-424_0
+2025-03-13 09:15:34.661225 finished: building insfile for tabular output file head_0_-424_0 took: 0:00:00.004996
+2025-03-13 09:15:34.661225 starting: adding observation from instruction file '..\pest_files\head_0_-424_0.ins'
+2025-03-13 09:15:34.677225 finished: adding observation from instruction file '..\pest_files\head_0_-424_0.ins' took: 0:00:00.016000
+2025-03-13 09:15:34.677225 finished: adding observations from tabular output file '['head_0_-424_0']' took: 0:00:00.024002
+2025-03-13 09:15:34.677225 finished: adding observations from output file head_0_-424_0 took: 0:00:00.024002
+2025-03-13 09:15:34.677225 starting: adding observations from output file head_0_-50_-50
+2025-03-13 09:15:34.678225 starting: adding observations from tabular output file '['head_0_-50_-50']'
+2025-03-13 09:15:34.678225 starting: reading list-style file: ..\pest_files\head_0_-50_-50
+2025-03-13 09:15:34.680222 finished: reading list-style file: ..\pest_files\head_0_-50_-50 took: 0:00:00.001997
+2025-03-13 09:15:34.681223 starting: building insfile for tabular output file head_0_-50_-50
+2025-03-13 09:15:34.685249 finished: building insfile for tabular output file head_0_-50_-50 took: 0:00:00.004026
+2025-03-13 09:15:34.685249 starting: adding observation from instruction file '..\pest_files\head_0_-50_-50.ins'
+2025-03-13 09:15:34.702325 finished: adding observation from instruction file '..\pest_files\head_0_-50_-50.ins' took: 0:00:00.017076
+2025-03-13 09:15:34.703323 finished: adding observations from tabular output file '['head_0_-50_-50']' took: 0:00:00.025098
+2025-03-13 09:15:34.703323 finished: adding observations from output file head_0_-50_-50 took: 0:00:00.026098
+2025-03-13 09:15:34.703323 starting: adding observations from output file head_0_-50_50
+2025-03-13 09:15:34.703323 starting: adding observations from tabular output file '['head_0_-50_50']'
+2025-03-13 09:15:34.703323 starting: reading list-style file: ..\pest_files\head_0_-50_50
+2025-03-13 09:15:34.706318 finished: reading list-style file: ..\pest_files\head_0_-50_50 took: 0:00:00.002995
+2025-03-13 09:15:34.706318 starting: building insfile for tabular output file head_0_-50_50
+2025-03-13 09:15:34.710318 finished: building insfile for tabular output file head_0_-50_50 took: 0:00:00.004000
+2025-03-13 09:15:34.710318 starting: adding observation from instruction file '..\pest_files\head_0_-50_50.ins'
+2025-03-13 09:15:34.726883 finished: adding observation from instruction file '..\pest_files\head_0_-50_50.ins' took: 0:00:00.016565
+2025-03-13 09:15:34.727883 finished: adding observations from tabular output file '['head_0_-50_50']' took: 0:00:00.024560
+2025-03-13 09:15:34.727883 finished: adding observations from output file head_0_-50_50 took: 0:00:00.024560
+2025-03-13 09:15:34.727883 starting: adding observations from output file head_0_-70_0
+2025-03-13 09:15:34.727883 starting: adding observations from tabular output file '['head_0_-70_0']'
+2025-03-13 09:15:34.728338 starting: reading list-style file: ..\pest_files\head_0_-70_0
+2025-03-13 09:15:34.730380 finished: reading list-style file: ..\pest_files\head_0_-70_0 took: 0:00:00.002042
+2025-03-13 09:15:34.731388 starting: building insfile for tabular output file head_0_-70_0
+2025-03-13 09:15:34.735390 finished: building insfile for tabular output file head_0_-70_0 took: 0:00:00.004002
+2025-03-13 09:15:34.736389 starting: adding observation from instruction file '..\pest_files\head_0_-70_0.ins'
+2025-03-13 09:15:34.752388 finished: adding observation from instruction file '..\pest_files\head_0_-70_0.ins' took: 0:00:00.015999
+2025-03-13 09:15:34.753393 finished: adding observations from tabular output file '['head_0_-70_0']' took: 0:00:00.025510
+2025-03-13 09:15:34.753393 finished: adding observations from output file head_0_-70_0 took: 0:00:00.025510
+2025-03-13 09:15:34.753393 starting: adding observations from output file head_0_0_-141
+2025-03-13 09:15:34.753393 starting: adding observations from tabular output file '['head_0_0_-141']'
+2025-03-13 09:15:34.753393 starting: reading list-style file: ..\pest_files\head_0_0_-141
+2025-03-13 09:15:34.756389 finished: reading list-style file: ..\pest_files\head_0_0_-141 took: 0:00:00.002996
+2025-03-13 09:15:34.757388 starting: building insfile for tabular output file head_0_0_-141
+2025-03-13 09:15:34.762009 finished: building insfile for tabular output file head_0_0_-141 took: 0:00:00.004621
+2025-03-13 09:15:34.762009 starting: adding observation from instruction file '..\pest_files\head_0_0_-141.ins'
+2025-03-13 09:15:34.777525 finished: adding observation from instruction file '..\pest_files\head_0_0_-141.ins' took: 0:00:00.015516
+2025-03-13 09:15:34.777525 finished: adding observations from tabular output file '['head_0_0_-141']' took: 0:00:00.024132
+2025-03-13 09:15:34.777525 finished: adding observations from output file head_0_0_-141 took: 0:00:00.024132
+2025-03-13 09:15:34.778525 starting: adding observations from output file head_0_0_-282
+2025-03-13 09:15:34.778525 starting: adding observations from tabular output file '['head_0_0_-282']'
+2025-03-13 09:15:34.778525 starting: reading list-style file: ..\pest_files\head_0_0_-282
+2025-03-13 09:15:34.790012 finished: reading list-style file: ..\pest_files\head_0_0_-282 took: 0:00:00.011487
+2025-03-13 09:15:34.790012 starting: building insfile for tabular output file head_0_0_-282
+2025-03-13 09:15:34.795585 finished: building insfile for tabular output file head_0_0_-282 took: 0:00:00.005573
+2025-03-13 09:15:34.795585 starting: adding observation from instruction file '..\pest_files\head_0_0_-282.ins'
+2025-03-13 09:15:34.811766 finished: adding observation from instruction file '..\pest_files\head_0_0_-282.ins' took: 0:00:00.016181
+2025-03-13 09:15:34.811766 finished: adding observations from tabular output file '['head_0_0_-282']' took: 0:00:00.033241
+2025-03-13 09:15:34.811766 finished: adding observations from output file head_0_0_-282 took: 0:00:00.033241
+2025-03-13 09:15:34.811766 starting: adding observations from output file head_0_0_-424
+2025-03-13 09:15:34.811766 starting: adding observations from tabular output file '['head_0_0_-424']'
+2025-03-13 09:15:34.811766 starting: reading list-style file: ..\pest_files\head_0_0_-424
+2025-03-13 09:15:34.814781 finished: reading list-style file: ..\pest_files\head_0_0_-424 took: 0:00:00.003015
+2025-03-13 09:15:34.814781 starting: building insfile for tabular output file head_0_0_-424
+2025-03-13 09:15:34.819425 finished: building insfile for tabular output file head_0_0_-424 took: 0:00:00.004644
+2025-03-13 09:15:34.819425 starting: adding observation from instruction file '..\pest_files\head_0_0_-424.ins'
+2025-03-13 09:15:34.835660 finished: adding observation from instruction file '..\pest_files\head_0_0_-424.ins' took: 0:00:00.016235
+2025-03-13 09:15:34.836657 finished: adding observations from tabular output file '['head_0_0_-424']' took: 0:00:00.024891
+2025-03-13 09:15:34.836657 finished: adding observations from output file head_0_0_-424 took: 0:00:00.024891
+2025-03-13 09:15:34.836657 starting: adding observations from output file head_0_0_-70
+2025-03-13 09:15:34.836657 starting: adding observations from tabular output file '['head_0_0_-70']'
+2025-03-13 09:15:34.836657 starting: reading list-style file: ..\pest_files\head_0_0_-70
+2025-03-13 09:15:34.839405 finished: reading list-style file: ..\pest_files\head_0_0_-70 took: 0:00:00.002748
+2025-03-13 09:15:34.839405 starting: building insfile for tabular output file head_0_0_-70
+2025-03-13 09:15:34.844150 finished: building insfile for tabular output file head_0_0_-70 took: 0:00:00.004745
+2025-03-13 09:15:34.844150 starting: adding observation from instruction file '..\pest_files\head_0_0_-70.ins'
+2025-03-13 09:15:34.860561 finished: adding observation from instruction file '..\pest_files\head_0_0_-70.ins' took: 0:00:00.016411
+2025-03-13 09:15:34.861065 finished: adding observations from tabular output file '['head_0_0_-70']' took: 0:00:00.024408
+2025-03-13 09:15:34.861065 finished: adding observations from output file head_0_0_-70 took: 0:00:00.024408
+2025-03-13 09:15:34.861065 starting: adding observations from output file head_0_0_0
+2025-03-13 09:15:34.861065 starting: adding observations from tabular output file '['head_0_0_0']'
+2025-03-13 09:15:34.861065 starting: reading list-style file: ..\pest_files\head_0_0_0
+2025-03-13 09:15:34.864076 finished: reading list-style file: ..\pest_files\head_0_0_0 took: 0:00:00.003011
+2025-03-13 09:15:34.865071 starting: building insfile for tabular output file head_0_0_0
+2025-03-13 09:15:34.869284 finished: building insfile for tabular output file head_0_0_0 took: 0:00:00.004213
+2025-03-13 09:15:34.869284 starting: adding observation from instruction file '..\pest_files\head_0_0_0.ins'
+2025-03-13 09:15:34.884416 finished: adding observation from instruction file '..\pest_files\head_0_0_0.ins' took: 0:00:00.015132
+2025-03-13 09:15:34.885428 finished: adding observations from tabular output file '['head_0_0_0']' took: 0:00:00.024363
+2025-03-13 09:15:34.885428 finished: adding observations from output file head_0_0_0 took: 0:00:00.024363
+2025-03-13 09:15:34.885428 starting: adding observations from output file head_0_0_141
+2025-03-13 09:15:34.885428 starting: adding observations from tabular output file '['head_0_0_141']'
+2025-03-13 09:15:34.885428 starting: reading list-style file: ..\pest_files\head_0_0_141
+2025-03-13 09:15:34.888720 finished: reading list-style file: ..\pest_files\head_0_0_141 took: 0:00:00.003292
+2025-03-13 09:15:34.889726 starting: building insfile for tabular output file head_0_0_141
+2025-03-13 09:15:34.893557 finished: building insfile for tabular output file head_0_0_141 took: 0:00:00.003831
+2025-03-13 09:15:34.893557 starting: adding observation from instruction file '..\pest_files\head_0_0_141.ins'
+2025-03-13 09:15:34.912179 finished: adding observation from instruction file '..\pest_files\head_0_0_141.ins' took: 0:00:00.018622
+2025-03-13 09:15:34.912179 finished: adding observations from tabular output file '['head_0_0_141']' took: 0:00:00.026751
+2025-03-13 09:15:34.912179 finished: adding observations from output file head_0_0_141 took: 0:00:00.026751
+2025-03-13 09:15:34.912179 starting: adding observations from output file head_0_0_282
+2025-03-13 09:15:34.912179 starting: adding observations from tabular output file '['head_0_0_282']'
+2025-03-13 09:15:34.912179 starting: reading list-style file: ..\pest_files\head_0_0_282
+2025-03-13 09:15:34.915024 finished: reading list-style file: ..\pest_files\head_0_0_282 took: 0:00:00.002845
+2025-03-13 09:15:34.916583 starting: building insfile for tabular output file head_0_0_282
+2025-03-13 09:15:34.920963 finished: building insfile for tabular output file head_0_0_282 took: 0:00:00.004380
+2025-03-13 09:15:34.920963 starting: adding observation from instruction file '..\pest_files\head_0_0_282.ins'
+2025-03-13 09:15:34.935984 finished: adding observation from instruction file '..\pest_files\head_0_0_282.ins' took: 0:00:00.015021
+2025-03-13 09:15:34.937386 finished: adding observations from tabular output file '['head_0_0_282']' took: 0:00:00.025207
+2025-03-13 09:15:34.937386 finished: adding observations from output file head_0_0_282 took: 0:00:00.025207
+2025-03-13 09:15:34.937386 starting: adding observations from output file head_0_0_424
+2025-03-13 09:15:34.937890 starting: adding observations from tabular output file '['head_0_0_424']'
+2025-03-13 09:15:34.937890 starting: reading list-style file: ..\pest_files\head_0_0_424
+2025-03-13 09:15:34.940034 finished: reading list-style file: ..\pest_files\head_0_0_424 took: 0:00:00.002144
+2025-03-13 09:15:34.940034 starting: building insfile for tabular output file head_0_0_424
+2025-03-13 09:15:34.945116 finished: building insfile for tabular output file head_0_0_424 took: 0:00:00.005082
+2025-03-13 09:15:34.945116 starting: adding observation from instruction file '..\pest_files\head_0_0_424.ins'
+2025-03-13 09:15:34.960506 finished: adding observation from instruction file '..\pest_files\head_0_0_424.ins' took: 0:00:00.015390
+2025-03-13 09:15:34.961014 finished: adding observations from tabular output file '['head_0_0_424']' took: 0:00:00.023124
+2025-03-13 09:15:34.961014 finished: adding observations from output file head_0_0_424 took: 0:00:00.023628
+2025-03-13 09:15:34.961014 starting: adding observations from output file head_0_0_70
+2025-03-13 09:15:34.961014 starting: adding observations from tabular output file '['head_0_0_70']'
+2025-03-13 09:15:34.961014 starting: reading list-style file: ..\pest_files\head_0_0_70
+2025-03-13 09:15:34.963023 finished: reading list-style file: ..\pest_files\head_0_0_70 took: 0:00:00.002009
+2025-03-13 09:15:34.964330 starting: building insfile for tabular output file head_0_0_70
+2025-03-13 09:15:34.968083 finished: building insfile for tabular output file head_0_0_70 took: 0:00:00.003753
+2025-03-13 09:15:34.968083 starting: adding observation from instruction file '..\pest_files\head_0_0_70.ins'
+2025-03-13 09:15:34.986577 finished: adding observation from instruction file '..\pest_files\head_0_0_70.ins' took: 0:00:00.018494
+2025-03-13 09:15:34.986577 finished: adding observations from tabular output file '['head_0_0_70']' took: 0:00:00.025563
+2025-03-13 09:15:34.986577 finished: adding observations from output file head_0_0_70 took: 0:00:00.025563
+2025-03-13 09:15:34.986577 starting: adding observations from output file head_0_100_-100
+2025-03-13 09:15:34.986577 starting: adding observations from tabular output file '['head_0_100_-100']'
+2025-03-13 09:15:34.987590 starting: reading list-style file: ..\pest_files\head_0_100_-100
+2025-03-13 09:15:34.990126 finished: reading list-style file: ..\pest_files\head_0_100_-100 took: 0:00:00.002536
+2025-03-13 09:15:34.990126 starting: building insfile for tabular output file head_0_100_-100
+2025-03-13 09:15:34.995173 finished: building insfile for tabular output file head_0_100_-100 took: 0:00:00.005047
+2025-03-13 09:15:34.995173 starting: adding observation from instruction file '..\pest_files\head_0_100_-100.ins'
+2025-03-13 09:15:35.011438 finished: adding observation from instruction file '..\pest_files\head_0_100_-100.ins' took: 0:00:00.016265
+2025-03-13 09:15:35.012449 finished: adding observations from tabular output file '['head_0_100_-100']' took: 0:00:00.025872
+2025-03-13 09:15:35.012449 finished: adding observations from output file head_0_100_-100 took: 0:00:00.025872
+2025-03-13 09:15:35.012449 starting: adding observations from output file head_0_100_100
+2025-03-13 09:15:35.012449 starting: adding observations from tabular output file '['head_0_100_100']'
+2025-03-13 09:15:35.012449 starting: reading list-style file: ..\pest_files\head_0_100_100
+2025-03-13 09:15:35.014820 finished: reading list-style file: ..\pest_files\head_0_100_100 took: 0:00:00.002371
+2025-03-13 09:15:35.015820 starting: building insfile for tabular output file head_0_100_100
+2025-03-13 09:15:35.019770 finished: building insfile for tabular output file head_0_100_100 took: 0:00:00.003950
+2025-03-13 09:15:35.019770 starting: adding observation from instruction file '..\pest_files\head_0_100_100.ins'
+2025-03-13 09:15:35.036262 finished: adding observation from instruction file '..\pest_files\head_0_100_100.ins' took: 0:00:00.016492
+2025-03-13 09:15:35.036262 finished: adding observations from tabular output file '['head_0_100_100']' took: 0:00:00.023813
+2025-03-13 09:15:35.037446 finished: adding observations from output file head_0_100_100 took: 0:00:00.024997
+2025-03-13 09:15:35.037446 starting: adding observations from output file head_0_141_0
+2025-03-13 09:15:35.037446 starting: adding observations from tabular output file '['head_0_141_0']'
+2025-03-13 09:15:35.037446 starting: reading list-style file: ..\pest_files\head_0_141_0
+2025-03-13 09:15:35.038962 finished: reading list-style file: ..\pest_files\head_0_141_0 took: 0:00:00.001516
+2025-03-13 09:15:35.040376 starting: building insfile for tabular output file head_0_141_0
+2025-03-13 09:15:35.045053 finished: building insfile for tabular output file head_0_141_0 took: 0:00:00.004677
+2025-03-13 09:15:35.045053 starting: adding observation from instruction file '..\pest_files\head_0_141_0.ins'
+2025-03-13 09:15:35.060553 finished: adding observation from instruction file '..\pest_files\head_0_141_0.ins' took: 0:00:00.015500
+2025-03-13 09:15:35.061550 finished: adding observations from tabular output file '['head_0_141_0']' took: 0:00:00.024104
+2025-03-13 09:15:35.061550 finished: adding observations from output file head_0_141_0 took: 0:00:00.024104
+2025-03-13 09:15:35.061550 starting: adding observations from output file head_0_200_-200
+2025-03-13 09:15:35.061550 starting: adding observations from tabular output file '['head_0_200_-200']'
+2025-03-13 09:15:35.062180 starting: reading list-style file: ..\pest_files\head_0_200_-200
+2025-03-13 09:15:35.063758 finished: reading list-style file: ..\pest_files\head_0_200_-200 took: 0:00:00.001578
+2025-03-13 09:15:35.064967 starting: building insfile for tabular output file head_0_200_-200
+2025-03-13 09:15:35.068944 finished: building insfile for tabular output file head_0_200_-200 took: 0:00:00.003977
+2025-03-13 09:15:35.070019 starting: adding observation from instruction file '..\pest_files\head_0_200_-200.ins'
+2025-03-13 09:15:35.086031 finished: adding observation from instruction file '..\pest_files\head_0_200_-200.ins' took: 0:00:00.016012
+2025-03-13 09:15:35.087029 finished: adding observations from tabular output file '['head_0_200_-200']' took: 0:00:00.025479
+2025-03-13 09:15:35.087029 finished: adding observations from output file head_0_200_-200 took: 0:00:00.025479
+2025-03-13 09:15:35.087029 starting: adding observations from output file head_0_200_200
+2025-03-13 09:15:35.087029 starting: adding observations from tabular output file '['head_0_200_200']'
+2025-03-13 09:15:35.088028 starting: reading list-style file: ..\pest_files\head_0_200_200
+2025-03-13 09:15:35.090479 finished: reading list-style file: ..\pest_files\head_0_200_200 took: 0:00:00.002451
+2025-03-13 09:15:35.090479 starting: building insfile for tabular output file head_0_200_200
+2025-03-13 09:15:35.094932 finished: building insfile for tabular output file head_0_200_200 took: 0:00:00.004453
+2025-03-13 09:15:35.094932 starting: adding observation from instruction file '..\pest_files\head_0_200_200.ins'
+2025-03-13 09:15:35.112170 finished: adding observation from instruction file '..\pest_files\head_0_200_200.ins' took: 0:00:00.017238
+2025-03-13 09:15:35.113170 finished: adding observations from tabular output file '['head_0_200_200']' took: 0:00:00.026141
+2025-03-13 09:15:35.113170 finished: adding observations from output file head_0_200_200 took: 0:00:00.026141
+2025-03-13 09:15:35.113170 starting: adding observations from output file head_0_282_0
+2025-03-13 09:15:35.113170 starting: adding observations from tabular output file '['head_0_282_0']'
+2025-03-13 09:15:35.113170 starting: reading list-style file: ..\pest_files\head_0_282_0
+2025-03-13 09:15:35.115163 finished: reading list-style file: ..\pest_files\head_0_282_0 took: 0:00:00.001993
+2025-03-13 09:15:35.116163 starting: building insfile for tabular output file head_0_282_0
+2025-03-13 09:15:35.120186 finished: building insfile for tabular output file head_0_282_0 took: 0:00:00.004023
+2025-03-13 09:15:35.121165 starting: adding observation from instruction file '..\pest_files\head_0_282_0.ins'
+2025-03-13 09:15:35.137164 finished: adding observation from instruction file '..\pest_files\head_0_282_0.ins' took: 0:00:00.015999
+2025-03-13 09:15:35.137164 finished: adding observations from tabular output file '['head_0_282_0']' took: 0:00:00.023994
+2025-03-13 09:15:35.138164 finished: adding observations from output file head_0_282_0 took: 0:00:00.024994
+2025-03-13 09:15:35.138164 starting: adding observations from output file head_0_300_-300
+2025-03-13 09:15:35.138164 starting: adding observations from tabular output file '['head_0_300_-300']'
+2025-03-13 09:15:35.138164 starting: reading list-style file: ..\pest_files\head_0_300_-300
+2025-03-13 09:15:35.140170 finished: reading list-style file: ..\pest_files\head_0_300_-300 took: 0:00:00.002006
+2025-03-13 09:15:35.141168 starting: building insfile for tabular output file head_0_300_-300
+2025-03-13 09:15:35.145147 finished: building insfile for tabular output file head_0_300_-300 took: 0:00:00.003979
+2025-03-13 09:15:35.145147 starting: adding observation from instruction file '..\pest_files\head_0_300_-300.ins'
+2025-03-13 09:15:35.160563 finished: adding observation from instruction file '..\pest_files\head_0_300_-300.ins' took: 0:00:00.015416
+2025-03-13 09:15:35.160563 finished: adding observations from tabular output file '['head_0_300_-300']' took: 0:00:00.022399
+2025-03-13 09:15:35.161563 finished: adding observations from output file head_0_300_-300 took: 0:00:00.023399
+2025-03-13 09:15:35.161563 starting: adding observations from output file head_0_300_300
+2025-03-13 09:15:35.161563 starting: adding observations from tabular output file '['head_0_300_300']'
+2025-03-13 09:15:35.161563 starting: reading list-style file: ..\pest_files\head_0_300_300
+2025-03-13 09:15:35.164067 finished: reading list-style file: ..\pest_files\head_0_300_300 took: 0:00:00.002504
+2025-03-13 09:15:35.164067 starting: building insfile for tabular output file head_0_300_300
+2025-03-13 09:15:35.168335 finished: building insfile for tabular output file head_0_300_300 took: 0:00:00.004268
+2025-03-13 09:15:35.168335 starting: adding observation from instruction file '..\pest_files\head_0_300_300.ins'
+2025-03-13 09:15:35.184102 finished: adding observation from instruction file '..\pest_files\head_0_300_300.ins' took: 0:00:00.015767
+2025-03-13 09:15:35.184102 finished: adding observations from tabular output file '['head_0_300_300']' took: 0:00:00.022539
+2025-03-13 09:15:35.184102 finished: adding observations from output file head_0_300_300 took: 0:00:00.022539
+2025-03-13 09:15:35.185102 starting: adding observations from output file head_0_424_0
+2025-03-13 09:15:35.185102 starting: adding observations from tabular output file '['head_0_424_0']'
+2025-03-13 09:15:35.185102 starting: reading list-style file: ..\pest_files\head_0_424_0
+2025-03-13 09:15:35.187101 finished: reading list-style file: ..\pest_files\head_0_424_0 took: 0:00:00.001999
+2025-03-13 09:15:35.188102 starting: building insfile for tabular output file head_0_424_0
+2025-03-13 09:15:35.191861 finished: building insfile for tabular output file head_0_424_0 took: 0:00:00.003759
+2025-03-13 09:15:35.192943 starting: adding observation from instruction file '..\pest_files\head_0_424_0.ins'
+2025-03-13 09:15:35.208832 finished: adding observation from instruction file '..\pest_files\head_0_424_0.ins' took: 0:00:00.015889
+2025-03-13 09:15:35.210039 finished: adding observations from tabular output file '['head_0_424_0']' took: 0:00:00.024937
+2025-03-13 09:15:35.210039 finished: adding observations from output file head_0_424_0 took: 0:00:00.024937
+2025-03-13 09:15:35.210039 starting: adding observations from output file head_0_50_-50
+2025-03-13 09:15:35.210543 starting: adding observations from tabular output file '['head_0_50_-50']'
+2025-03-13 09:15:35.210543 starting: reading list-style file: ..\pest_files\head_0_50_-50
+2025-03-13 09:15:35.211940 finished: reading list-style file: ..\pest_files\head_0_50_-50 took: 0:00:00.001397
+2025-03-13 09:15:35.213140 starting: building insfile for tabular output file head_0_50_-50
+2025-03-13 09:15:35.217654 finished: building insfile for tabular output file head_0_50_-50 took: 0:00:00.004514
+2025-03-13 09:15:35.217654 starting: adding observation from instruction file '..\pest_files\head_0_50_-50.ins'
+2025-03-13 09:15:35.237652 finished: adding observation from instruction file '..\pest_files\head_0_50_-50.ins' took: 0:00:00.019998
+2025-03-13 09:15:35.237652 finished: adding observations from tabular output file '['head_0_50_-50']' took: 0:00:00.027109
+2025-03-13 09:15:35.237652 finished: adding observations from output file head_0_50_-50 took: 0:00:00.027613
+2025-03-13 09:15:35.238649 starting: adding observations from output file head_0_50_50
+2025-03-13 09:15:35.238649 starting: adding observations from tabular output file '['head_0_50_50']'
+2025-03-13 09:15:35.238649 starting: reading list-style file: ..\pest_files\head_0_50_50
+2025-03-13 09:15:35.240665 finished: reading list-style file: ..\pest_files\head_0_50_50 took: 0:00:00.002016
+2025-03-13 09:15:35.241699 starting: building insfile for tabular output file head_0_50_50
+2025-03-13 09:15:35.244714 finished: building insfile for tabular output file head_0_50_50 took: 0:00:00.003015
+2025-03-13 09:15:35.244714 starting: adding observation from instruction file '..\pest_files\head_0_50_50.ins'
+2025-03-13 09:15:35.264055 finished: adding observation from instruction file '..\pest_files\head_0_50_50.ins' took: 0:00:00.019341
+2025-03-13 09:15:35.265054 finished: adding observations from tabular output file '['head_0_50_50']' took: 0:00:00.026405
+2025-03-13 09:15:35.265054 finished: adding observations from output file head_0_50_50 took: 0:00:00.026405
+2025-03-13 09:15:35.265054 starting: adding observations from output file head_0_70_0
+2025-03-13 09:15:35.265054 starting: adding observations from tabular output file '['head_0_70_0']'
+2025-03-13 09:15:35.265054 starting: reading list-style file: ..\pest_files\head_0_70_0
+2025-03-13 09:15:35.268486 finished: reading list-style file: ..\pest_files\head_0_70_0 took: 0:00:00.003432
+2025-03-13 09:15:35.268991 starting: building insfile for tabular output file head_0_70_0
+2025-03-13 09:15:35.273002 finished: building insfile for tabular output file head_0_70_0 took: 0:00:00.004011
+2025-03-13 09:15:35.273002 starting: adding observation from instruction file '..\pest_files\head_0_70_0.ins'
+2025-03-13 09:15:35.291997 finished: adding observation from instruction file '..\pest_files\head_0_70_0.ins' took: 0:00:00.018995
+2025-03-13 09:15:35.292998 finished: adding observations from tabular output file '['head_0_70_0']' took: 0:00:00.027944
+2025-03-13 09:15:35.292998 finished: adding observations from output file head_0_70_0 took: 0:00:00.027944
+2025-03-13 09:15:35.292998 starting: adding observations from output file head_2_-100_-100
+2025-03-13 09:15:35.292998 starting: adding observations from tabular output file '['head_2_-100_-100']'
+2025-03-13 09:15:35.292998 starting: reading list-style file: ..\pest_files\head_2_-100_-100
+2025-03-13 09:15:35.295999 finished: reading list-style file: ..\pest_files\head_2_-100_-100 took: 0:00:00.003001
+2025-03-13 09:15:35.295999 starting: building insfile for tabular output file head_2_-100_-100
+2025-03-13 09:15:35.301330 finished: building insfile for tabular output file head_2_-100_-100 took: 0:00:00.005331
+2025-03-13 09:15:35.302493 starting: adding observation from instruction file '..\pest_files\head_2_-100_-100.ins'
+2025-03-13 09:15:35.320859 finished: adding observation from instruction file '..\pest_files\head_2_-100_-100.ins' took: 0:00:00.018366
+2025-03-13 09:15:35.321853 finished: adding observations from tabular output file '['head_2_-100_-100']' took: 0:00:00.028855
+2025-03-13 09:15:35.321853 finished: adding observations from output file head_2_-100_-100 took: 0:00:00.028855
+2025-03-13 09:15:35.321853 starting: adding observations from output file head_2_-100_100
+2025-03-13 09:15:35.321853 starting: adding observations from tabular output file '['head_2_-100_100']'
+2025-03-13 09:15:35.322853 starting: reading list-style file: ..\pest_files\head_2_-100_100
+2025-03-13 09:15:35.326342 finished: reading list-style file: ..\pest_files\head_2_-100_100 took: 0:00:00.003489
+2025-03-13 09:15:35.326342 starting: building insfile for tabular output file head_2_-100_100
+2025-03-13 09:15:35.332147 finished: building insfile for tabular output file head_2_-100_100 took: 0:00:00.005805
+2025-03-13 09:15:35.332147 starting: adding observation from instruction file '..\pest_files\head_2_-100_100.ins'
+2025-03-13 09:15:35.350826 finished: adding observation from instruction file '..\pest_files\head_2_-100_100.ins' took: 0:00:00.018679
+2025-03-13 09:15:35.351828 finished: adding observations from tabular output file '['head_2_-100_100']' took: 0:00:00.029975
+2025-03-13 09:15:35.351828 finished: adding observations from output file head_2_-100_100 took: 0:00:00.029975
+2025-03-13 09:15:35.351828 starting: adding observations from output file head_2_-141_0
+2025-03-13 09:15:35.351828 starting: adding observations from tabular output file '['head_2_-141_0']'
+2025-03-13 09:15:35.351828 starting: reading list-style file: ..\pest_files\head_2_-141_0
+2025-03-13 09:15:35.354825 finished: reading list-style file: ..\pest_files\head_2_-141_0 took: 0:00:00.002997
+2025-03-13 09:15:35.354825 starting: building insfile for tabular output file head_2_-141_0
+2025-03-13 09:15:35.358824 finished: building insfile for tabular output file head_2_-141_0 took: 0:00:00.003999
+2025-03-13 09:15:35.358824 starting: adding observation from instruction file '..\pest_files\head_2_-141_0.ins'
+2025-03-13 09:15:35.376097 finished: adding observation from instruction file '..\pest_files\head_2_-141_0.ins' took: 0:00:00.017273
+2025-03-13 09:15:35.377097 finished: adding observations from tabular output file '['head_2_-141_0']' took: 0:00:00.025269
+2025-03-13 09:15:35.377097 finished: adding observations from output file head_2_-141_0 took: 0:00:00.025269
+2025-03-13 09:15:35.377097 starting: adding observations from output file head_2_-200_-200
+2025-03-13 09:15:35.377097 starting: adding observations from tabular output file '['head_2_-200_-200']'
+2025-03-13 09:15:35.377097 starting: reading list-style file: ..\pest_files\head_2_-200_-200
+2025-03-13 09:15:35.379239 finished: reading list-style file: ..\pest_files\head_2_-200_-200 took: 0:00:00.002142
+2025-03-13 09:15:35.380247 starting: building insfile for tabular output file head_2_-200_-200
+2025-03-13 09:15:35.383256 finished: building insfile for tabular output file head_2_-200_-200 took: 0:00:00.003009
+2025-03-13 09:15:35.384266 starting: adding observation from instruction file '..\pest_files\head_2_-200_-200.ins'
+2025-03-13 09:15:35.399691 finished: adding observation from instruction file '..\pest_files\head_2_-200_-200.ins' took: 0:00:00.015425
+2025-03-13 09:15:35.400691 finished: adding observations from tabular output file '['head_2_-200_-200']' took: 0:00:00.023594
+2025-03-13 09:15:35.400691 finished: adding observations from output file head_2_-200_-200 took: 0:00:00.023594
+2025-03-13 09:15:35.400691 starting: adding observations from output file head_2_-200_200
+2025-03-13 09:15:35.400691 starting: adding observations from tabular output file '['head_2_-200_200']'
+2025-03-13 09:15:35.400691 starting: reading list-style file: ..\pest_files\head_2_-200_200
+2025-03-13 09:15:35.403700 finished: reading list-style file: ..\pest_files\head_2_-200_200 took: 0:00:00.003009
+2025-03-13 09:15:35.404697 starting: building insfile for tabular output file head_2_-200_200
+2025-03-13 09:15:35.409775 finished: building insfile for tabular output file head_2_-200_200 took: 0:00:00.005078
+2025-03-13 09:15:35.409775 starting: adding observation from instruction file '..\pest_files\head_2_-200_200.ins'
+2025-03-13 09:15:35.427791 finished: adding observation from instruction file '..\pest_files\head_2_-200_200.ins' took: 0:00:00.018016
+2025-03-13 09:15:35.427791 finished: adding observations from tabular output file '['head_2_-200_200']' took: 0:00:00.027100
+2025-03-13 09:15:35.427791 finished: adding observations from output file head_2_-200_200 took: 0:00:00.027100
+2025-03-13 09:15:35.428791 starting: adding observations from output file head_2_-282_0
+2025-03-13 09:15:35.428791 starting: adding observations from tabular output file '['head_2_-282_0']'
+2025-03-13 09:15:35.428791 starting: reading list-style file: ..\pest_files\head_2_-282_0
+2025-03-13 09:15:35.430807 finished: reading list-style file: ..\pest_files\head_2_-282_0 took: 0:00:00.002016
+2025-03-13 09:15:35.430807 starting: building insfile for tabular output file head_2_-282_0
+2025-03-13 09:15:35.435125 finished: building insfile for tabular output file head_2_-282_0 took: 0:00:00.004318
+2025-03-13 09:15:35.435125 starting: adding observation from instruction file '..\pest_files\head_2_-282_0.ins'
+2025-03-13 09:15:35.451681 finished: adding observation from instruction file '..\pest_files\head_2_-282_0.ins' took: 0:00:00.016556
+2025-03-13 09:15:35.451681 finished: adding observations from tabular output file '['head_2_-282_0']' took: 0:00:00.022890
+2025-03-13 09:15:35.452681 finished: adding observations from output file head_2_-282_0 took: 0:00:00.023890
+2025-03-13 09:15:35.452681 starting: adding observations from output file head_2_-300_-300
+2025-03-13 09:15:35.452681 starting: adding observations from tabular output file '['head_2_-300_-300']'
+2025-03-13 09:15:35.452681 starting: reading list-style file: ..\pest_files\head_2_-300_-300
+2025-03-13 09:15:35.455682 finished: reading list-style file: ..\pest_files\head_2_-300_-300 took: 0:00:00.003001
+2025-03-13 09:15:35.456681 starting: building insfile for tabular output file head_2_-300_-300
+2025-03-13 09:15:35.460581 finished: building insfile for tabular output file head_2_-300_-300 took: 0:00:00.003900
+2025-03-13 09:15:35.460581 starting: adding observation from instruction file '..\pest_files\head_2_-300_-300.ins'
+2025-03-13 09:15:35.477385 finished: adding observation from instruction file '..\pest_files\head_2_-300_-300.ins' took: 0:00:00.016804
+2025-03-13 09:15:35.478385 finished: adding observations from tabular output file '['head_2_-300_-300']' took: 0:00:00.025704
+2025-03-13 09:15:35.478385 finished: adding observations from output file head_2_-300_-300 took: 0:00:00.025704
+2025-03-13 09:15:35.478385 starting: adding observations from output file head_2_-300_300
+2025-03-13 09:15:35.478385 starting: adding observations from tabular output file '['head_2_-300_300']'
+2025-03-13 09:15:35.478385 starting: reading list-style file: ..\pest_files\head_2_-300_300
+2025-03-13 09:15:35.481210 finished: reading list-style file: ..\pest_files\head_2_-300_300 took: 0:00:00.002825
+2025-03-13 09:15:35.481210 starting: building insfile for tabular output file head_2_-300_300
+2025-03-13 09:15:35.485624 finished: building insfile for tabular output file head_2_-300_300 took: 0:00:00.004414
+2025-03-13 09:15:35.485624 starting: adding observation from instruction file '..\pest_files\head_2_-300_300.ins'
+2025-03-13 09:15:35.501680 finished: adding observation from instruction file '..\pest_files\head_2_-300_300.ins' took: 0:00:00.016056
+2025-03-13 09:15:35.502689 finished: adding observations from tabular output file '['head_2_-300_300']' took: 0:00:00.024304
+2025-03-13 09:15:35.502689 finished: adding observations from output file head_2_-300_300 took: 0:00:00.024304
+2025-03-13 09:15:35.502689 starting: adding observations from output file head_2_-424_0
+2025-03-13 09:15:35.502689 starting: adding observations from tabular output file '['head_2_-424_0']'
+2025-03-13 09:15:35.503680 starting: reading list-style file: ..\pest_files\head_2_-424_0
+2025-03-13 09:15:35.506064 finished: reading list-style file: ..\pest_files\head_2_-424_0 took: 0:00:00.002384
+2025-03-13 09:15:35.506064 starting: building insfile for tabular output file head_2_-424_0
+2025-03-13 09:15:35.510064 finished: building insfile for tabular output file head_2_-424_0 took: 0:00:00.004000
+2025-03-13 09:15:35.510064 starting: adding observation from instruction file '..\pest_files\head_2_-424_0.ins'
+2025-03-13 09:15:35.526443 finished: adding observation from instruction file '..\pest_files\head_2_-424_0.ins' took: 0:00:00.016379
+2025-03-13 09:15:35.527443 finished: adding observations from tabular output file '['head_2_-424_0']' took: 0:00:00.024754
+2025-03-13 09:15:35.527443 finished: adding observations from output file head_2_-424_0 took: 0:00:00.024754
+2025-03-13 09:15:35.527443 starting: adding observations from output file head_2_-50_-50
+2025-03-13 09:15:35.527443 starting: adding observations from tabular output file '['head_2_-50_-50']'
+2025-03-13 09:15:35.527443 starting: reading list-style file: ..\pest_files\head_2_-50_-50
+2025-03-13 09:15:35.530788 finished: reading list-style file: ..\pest_files\head_2_-50_-50 took: 0:00:00.003345
+2025-03-13 09:15:35.531799 starting: building insfile for tabular output file head_2_-50_-50
+2025-03-13 09:15:35.535796 finished: building insfile for tabular output file head_2_-50_-50 took: 0:00:00.003997
+2025-03-13 09:15:35.536895 starting: adding observation from instruction file '..\pest_files\head_2_-50_-50.ins'
+2025-03-13 09:15:35.555274 finished: adding observation from instruction file '..\pest_files\head_2_-50_-50.ins' took: 0:00:00.018379
+2025-03-13 09:15:35.556273 finished: adding observations from tabular output file '['head_2_-50_-50']' took: 0:00:00.028830
+2025-03-13 09:15:35.556273 finished: adding observations from output file head_2_-50_-50 took: 0:00:00.028830
+2025-03-13 09:15:35.556273 starting: adding observations from output file head_2_-50_50
+2025-03-13 09:15:35.556273 starting: adding observations from tabular output file '['head_2_-50_50']'
+2025-03-13 09:15:35.556273 starting: reading list-style file: ..\pest_files\head_2_-50_50
+2025-03-13 09:15:35.559284 finished: reading list-style file: ..\pest_files\head_2_-50_50 took: 0:00:00.003011
+2025-03-13 09:15:35.560285 starting: building insfile for tabular output file head_2_-50_50
+2025-03-13 09:15:35.565514 finished: building insfile for tabular output file head_2_-50_50 took: 0:00:00.005229
+2025-03-13 09:15:35.565514 starting: adding observation from instruction file '..\pest_files\head_2_-50_50.ins'
+2025-03-13 09:15:35.587232 finished: adding observation from instruction file '..\pest_files\head_2_-50_50.ins' took: 0:00:00.021718
+2025-03-13 09:15:35.588750 finished: adding observations from tabular output file '['head_2_-50_50']' took: 0:00:00.032477
+2025-03-13 09:15:35.588750 finished: adding observations from output file head_2_-50_50 took: 0:00:00.032477
+2025-03-13 09:15:35.588750 starting: adding observations from output file head_2_-70_0
+2025-03-13 09:15:35.588750 starting: adding observations from tabular output file '['head_2_-70_0']'
+2025-03-13 09:15:35.588750 starting: reading list-style file: ..\pest_files\head_2_-70_0
+2025-03-13 09:15:35.591760 finished: reading list-style file: ..\pest_files\head_2_-70_0 took: 0:00:00.003010
+2025-03-13 09:15:35.592760 starting: building insfile for tabular output file head_2_-70_0
+2025-03-13 09:15:35.596926 finished: building insfile for tabular output file head_2_-70_0 took: 0:00:00.004166
+2025-03-13 09:15:35.596926 starting: adding observation from instruction file '..\pest_files\head_2_-70_0.ins'
+2025-03-13 09:15:35.616946 finished: adding observation from instruction file '..\pest_files\head_2_-70_0.ins' took: 0:00:00.020020
+2025-03-13 09:15:35.617947 finished: adding observations from tabular output file '['head_2_-70_0']' took: 0:00:00.029197
+2025-03-13 09:15:35.617947 finished: adding observations from output file head_2_-70_0 took: 0:00:00.029197
+2025-03-13 09:15:35.617947 starting: adding observations from output file head_2_0_-141
+2025-03-13 09:15:35.617947 starting: adding observations from tabular output file '['head_2_0_-141']'
+2025-03-13 09:15:35.617947 starting: reading list-style file: ..\pest_files\head_2_0_-141
+2025-03-13 09:15:35.621043 finished: reading list-style file: ..\pest_files\head_2_0_-141 took: 0:00:00.003096
+2025-03-13 09:15:35.622043 starting: building insfile for tabular output file head_2_0_-141
+2025-03-13 09:15:35.626043 finished: building insfile for tabular output file head_2_0_-141 took: 0:00:00.004000
+2025-03-13 09:15:35.626043 starting: adding observation from instruction file '..\pest_files\head_2_0_-141.ins'
+2025-03-13 09:15:35.644379 finished: adding observation from instruction file '..\pest_files\head_2_0_-141.ins' took: 0:00:00.018336
+2025-03-13 09:15:35.644379 finished: adding observations from tabular output file '['head_2_0_-141']' took: 0:00:00.026432
+2025-03-13 09:15:35.644379 finished: adding observations from output file head_2_0_-141 took: 0:00:00.026432
+2025-03-13 09:15:35.645379 starting: adding observations from output file head_2_0_-282
+2025-03-13 09:15:35.645379 starting: adding observations from tabular output file '['head_2_0_-282']'
+2025-03-13 09:15:35.645379 starting: reading list-style file: ..\pest_files\head_2_0_-282
+2025-03-13 09:15:35.648261 finished: reading list-style file: ..\pest_files\head_2_0_-282 took: 0:00:00.002882
+2025-03-13 09:15:35.648261 starting: building insfile for tabular output file head_2_0_-282
+2025-03-13 09:15:35.652440 finished: building insfile for tabular output file head_2_0_-282 took: 0:00:00.004179
+2025-03-13 09:15:35.653473 starting: adding observation from instruction file '..\pest_files\head_2_0_-282.ins'
+2025-03-13 09:15:35.669635 finished: adding observation from instruction file '..\pest_files\head_2_0_-282.ins' took: 0:00:00.016162
+2025-03-13 09:15:35.670635 finished: adding observations from tabular output file '['head_2_0_-282']' took: 0:00:00.025256
+2025-03-13 09:15:35.670635 finished: adding observations from output file head_2_0_-282 took: 0:00:00.025256
+2025-03-13 09:15:35.670635 starting: adding observations from output file head_2_0_-424
+2025-03-13 09:15:35.670635 starting: adding observations from tabular output file '['head_2_0_-424']'
+2025-03-13 09:15:35.670635 starting: reading list-style file: ..\pest_files\head_2_0_-424
+2025-03-13 09:15:35.672633 finished: reading list-style file: ..\pest_files\head_2_0_-424 took: 0:00:00.001998
+2025-03-13 09:15:35.673635 starting: building insfile for tabular output file head_2_0_-424
+2025-03-13 09:15:35.676646 finished: building insfile for tabular output file head_2_0_-424 took: 0:00:00.003011
+2025-03-13 09:15:35.676646 starting: adding observation from instruction file '..\pest_files\head_2_0_-424.ins'
+2025-03-13 09:15:35.693759 finished: adding observation from instruction file '..\pest_files\head_2_0_-424.ins' took: 0:00:00.017113
+2025-03-13 09:15:35.694758 finished: adding observations from tabular output file '['head_2_0_-424']' took: 0:00:00.024123
+2025-03-13 09:15:35.694758 finished: adding observations from output file head_2_0_-424 took: 0:00:00.024123
+2025-03-13 09:15:35.694758 starting: adding observations from output file head_2_0_-70
+2025-03-13 09:15:35.695263 starting: adding observations from tabular output file '['head_2_0_-70']'
+2025-03-13 09:15:35.695263 starting: reading list-style file: ..\pest_files\head_2_0_-70
+2025-03-13 09:15:35.697268 finished: reading list-style file: ..\pest_files\head_2_0_-70 took: 0:00:00.002005
+2025-03-13 09:15:35.697268 starting: building insfile for tabular output file head_2_0_-70
+2025-03-13 09:15:35.702274 finished: building insfile for tabular output file head_2_0_-70 took: 0:00:00.005006
+2025-03-13 09:15:35.702274 starting: adding observation from instruction file '..\pest_files\head_2_0_-70.ins'
+2025-03-13 09:15:35.718269 finished: adding observation from instruction file '..\pest_files\head_2_0_-70.ins' took: 0:00:00.015995
+2025-03-13 09:15:35.719270 finished: adding observations from tabular output file '['head_2_0_-70']' took: 0:00:00.024007
+2025-03-13 09:15:35.719270 finished: adding observations from output file head_2_0_-70 took: 0:00:00.024512
+2025-03-13 09:15:35.719270 starting: adding observations from output file head_2_0_0
+2025-03-13 09:15:35.719270 starting: adding observations from tabular output file '['head_2_0_0']'
+2025-03-13 09:15:35.719270 starting: reading list-style file: ..\pest_files\head_2_0_0
+2025-03-13 09:15:35.722358 finished: reading list-style file: ..\pest_files\head_2_0_0 took: 0:00:00.003088
+2025-03-13 09:15:35.722358 starting: building insfile for tabular output file head_2_0_0
+2025-03-13 09:15:35.726374 finished: building insfile for tabular output file head_2_0_0 took: 0:00:00.004016
+2025-03-13 09:15:35.726374 starting: adding observation from instruction file '..\pest_files\head_2_0_0.ins'
+2025-03-13 09:15:35.743867 finished: adding observation from instruction file '..\pest_files\head_2_0_0.ins' took: 0:00:00.017493
+2025-03-13 09:15:35.744867 finished: adding observations from tabular output file '['head_2_0_0']' took: 0:00:00.025597
+2025-03-13 09:15:35.744867 finished: adding observations from output file head_2_0_0 took: 0:00:00.025597
+2025-03-13 09:15:35.744867 starting: adding observations from output file head_2_0_141
+2025-03-13 09:15:35.744867 starting: adding observations from tabular output file '['head_2_0_141']'
+2025-03-13 09:15:35.744867 starting: reading list-style file: ..\pest_files\head_2_0_141
+2025-03-13 09:15:35.746866 finished: reading list-style file: ..\pest_files\head_2_0_141 took: 0:00:00.001999
+2025-03-13 09:15:35.747866 starting: building insfile for tabular output file head_2_0_141
+2025-03-13 09:15:35.751878 finished: building insfile for tabular output file head_2_0_141 took: 0:00:00.004012
+2025-03-13 09:15:35.751878 starting: adding observation from instruction file '..\pest_files\head_2_0_141.ins'
+2025-03-13 09:15:35.769467 finished: adding observation from instruction file '..\pest_files\head_2_0_141.ins' took: 0:00:00.017589
+2025-03-13 09:15:35.769467 finished: adding observations from tabular output file '['head_2_0_141']' took: 0:00:00.024600
+2025-03-13 09:15:35.769467 finished: adding observations from output file head_2_0_141 took: 0:00:00.024600
+2025-03-13 09:15:35.770467 starting: adding observations from output file head_2_0_282
+2025-03-13 09:15:35.770467 starting: adding observations from tabular output file '['head_2_0_282']'
+2025-03-13 09:15:35.770467 starting: reading list-style file: ..\pest_files\head_2_0_282
+2025-03-13 09:15:35.772481 finished: reading list-style file: ..\pest_files\head_2_0_282 took: 0:00:00.002014
+2025-03-13 09:15:35.773463 starting: building insfile for tabular output file head_2_0_282
+2025-03-13 09:15:35.776462 finished: building insfile for tabular output file head_2_0_282 took: 0:00:00.002999
+2025-03-13 09:15:35.776462 starting: adding observation from instruction file '..\pest_files\head_2_0_282.ins'
+2025-03-13 09:15:35.793780 finished: adding observation from instruction file '..\pest_files\head_2_0_282.ins' took: 0:00:00.017318
+2025-03-13 09:15:35.794780 finished: adding observations from tabular output file '['head_2_0_282']' took: 0:00:00.024313
+2025-03-13 09:15:35.794780 finished: adding observations from output file head_2_0_282 took: 0:00:00.024313
+2025-03-13 09:15:35.794780 starting: adding observations from output file head_2_0_424
+2025-03-13 09:15:35.794780 starting: adding observations from tabular output file '['head_2_0_424']'
+2025-03-13 09:15:35.794780 starting: reading list-style file: ..\pest_files\head_2_0_424
+2025-03-13 09:15:35.796779 finished: reading list-style file: ..\pest_files\head_2_0_424 took: 0:00:00.001999
+2025-03-13 09:15:35.797780 starting: building insfile for tabular output file head_2_0_424
+2025-03-13 09:15:35.802288 finished: building insfile for tabular output file head_2_0_424 took: 0:00:00.004508
+2025-03-13 09:15:35.802288 starting: adding observation from instruction file '..\pest_files\head_2_0_424.ins'
+2025-03-13 09:15:35.820769 finished: adding observation from instruction file '..\pest_files\head_2_0_424.ins' took: 0:00:00.018481
+2025-03-13 09:15:35.821782 finished: adding observations from tabular output file '['head_2_0_424']' took: 0:00:00.027002
+2025-03-13 09:15:35.821782 finished: adding observations from output file head_2_0_424 took: 0:00:00.027002
+2025-03-13 09:15:35.821782 starting: adding observations from output file head_2_0_70
+2025-03-13 09:15:35.821782 starting: adding observations from tabular output file '['head_2_0_70']'
+2025-03-13 09:15:35.821782 starting: reading list-style file: ..\pest_files\head_2_0_70
+2025-03-13 09:15:35.825063 finished: reading list-style file: ..\pest_files\head_2_0_70 took: 0:00:00.003281
+2025-03-13 09:15:35.825063 starting: building insfile for tabular output file head_2_0_70
+2025-03-13 09:15:35.829627 finished: building insfile for tabular output file head_2_0_70 took: 0:00:00.004564
+2025-03-13 09:15:35.829627 starting: adding observation from instruction file '..\pest_files\head_2_0_70.ins'
+2025-03-13 09:15:35.848135 finished: adding observation from instruction file '..\pest_files\head_2_0_70.ins' took: 0:00:00.018508
+2025-03-13 09:15:35.849134 finished: adding observations from tabular output file '['head_2_0_70']' took: 0:00:00.027352
+2025-03-13 09:15:35.849134 finished: adding observations from output file head_2_0_70 took: 0:00:00.027352
+2025-03-13 09:15:35.849134 starting: adding observations from output file head_2_100_-100
+2025-03-13 09:15:35.849134 starting: adding observations from tabular output file '['head_2_100_-100']'
+2025-03-13 09:15:35.849134 starting: reading list-style file: ..\pest_files\head_2_100_-100
+2025-03-13 09:15:35.851135 finished: reading list-style file: ..\pest_files\head_2_100_-100 took: 0:00:00.002001
+2025-03-13 09:15:35.852592 starting: building insfile for tabular output file head_2_100_-100
+2025-03-13 09:15:35.857207 finished: building insfile for tabular output file head_2_100_-100 took: 0:00:00.004615
+2025-03-13 09:15:35.857207 starting: adding observation from instruction file '..\pest_files\head_2_100_-100.ins'
+2025-03-13 09:15:35.881774 finished: adding observation from instruction file '..\pest_files\head_2_100_-100.ins' took: 0:00:00.024567
+2025-03-13 09:15:35.882792 finished: adding observations from tabular output file '['head_2_100_-100']' took: 0:00:00.033658
+2025-03-13 09:15:35.882792 finished: adding observations from output file head_2_100_-100 took: 0:00:00.033658
+2025-03-13 09:15:35.882792 starting: adding observations from output file head_2_100_100
+2025-03-13 09:15:35.882792 starting: adding observations from tabular output file '['head_2_100_100']'
+2025-03-13 09:15:35.882792 starting: reading list-style file: ..\pest_files\head_2_100_100
+2025-03-13 09:15:35.887359 finished: reading list-style file: ..\pest_files\head_2_100_100 took: 0:00:00.004567
+2025-03-13 09:15:35.888370 starting: building insfile for tabular output file head_2_100_100
+2025-03-13 09:15:35.893881 finished: building insfile for tabular output file head_2_100_100 took: 0:00:00.005511
+2025-03-13 09:15:35.893881 starting: adding observation from instruction file '..\pest_files\head_2_100_100.ins'
+2025-03-13 09:15:35.913819 finished: adding observation from instruction file '..\pest_files\head_2_100_100.ins' took: 0:00:00.019938
+2025-03-13 09:15:35.914827 finished: adding observations from tabular output file '['head_2_100_100']' took: 0:00:00.032035
+2025-03-13 09:15:35.914827 finished: adding observations from output file head_2_100_100 took: 0:00:00.032035
+2025-03-13 09:15:35.914827 starting: adding observations from output file head_2_141_0
+2025-03-13 09:15:35.914827 starting: adding observations from tabular output file '['head_2_141_0']'
+2025-03-13 09:15:35.914827 starting: reading list-style file: ..\pest_files\head_2_141_0
+2025-03-13 09:15:35.917828 finished: reading list-style file: ..\pest_files\head_2_141_0 took: 0:00:00.003001
+2025-03-13 09:15:35.918834 starting: building insfile for tabular output file head_2_141_0
+2025-03-13 09:15:35.923285 finished: building insfile for tabular output file head_2_141_0 took: 0:00:00.004451
+2025-03-13 09:15:35.923285 starting: adding observation from instruction file '..\pest_files\head_2_141_0.ins'
+2025-03-13 09:15:35.941547 finished: adding observation from instruction file '..\pest_files\head_2_141_0.ins' took: 0:00:00.018262
+2025-03-13 09:15:35.942545 finished: adding observations from tabular output file '['head_2_141_0']' took: 0:00:00.027718
+2025-03-13 09:15:35.942545 finished: adding observations from output file head_2_141_0 took: 0:00:00.027718
+2025-03-13 09:15:35.942545 starting: adding observations from output file head_2_200_-200
+2025-03-13 09:15:35.942545 starting: adding observations from tabular output file '['head_2_200_-200']'
+2025-03-13 09:15:35.942545 starting: reading list-style file: ..\pest_files\head_2_200_-200
+2025-03-13 09:15:35.945552 finished: reading list-style file: ..\pest_files\head_2_200_-200 took: 0:00:00.003007
+2025-03-13 09:15:35.946547 starting: building insfile for tabular output file head_2_200_-200
+2025-03-13 09:15:35.950778 finished: building insfile for tabular output file head_2_200_-200 took: 0:00:00.004231
+2025-03-13 09:15:35.950778 starting: adding observation from instruction file '..\pest_files\head_2_200_-200.ins'
+2025-03-13 09:15:35.968797 finished: adding observation from instruction file '..\pest_files\head_2_200_-200.ins' took: 0:00:00.018019
+2025-03-13 09:15:35.969798 finished: adding observations from tabular output file '['head_2_200_-200']' took: 0:00:00.027253
+2025-03-13 09:15:35.969798 finished: adding observations from output file head_2_200_-200 took: 0:00:00.027253
+2025-03-13 09:15:35.969798 starting: adding observations from output file head_2_200_200
+2025-03-13 09:15:35.969798 starting: adding observations from tabular output file '['head_2_200_200']'
+2025-03-13 09:15:35.969798 starting: reading list-style file: ..\pest_files\head_2_200_200
+2025-03-13 09:15:35.972943 finished: reading list-style file: ..\pest_files\head_2_200_200 took: 0:00:00.003145
+2025-03-13 09:15:35.972943 starting: building insfile for tabular output file head_2_200_200
+2025-03-13 09:15:35.976940 finished: building insfile for tabular output file head_2_200_200 took: 0:00:00.003997
+2025-03-13 09:15:35.977942 starting: adding observation from instruction file '..\pest_files\head_2_200_200.ins'
+2025-03-13 09:15:35.994602 finished: adding observation from instruction file '..\pest_files\head_2_200_200.ins' took: 0:00:00.016660
+2025-03-13 09:15:35.994602 finished: adding observations from tabular output file '['head_2_200_200']' took: 0:00:00.024804
+2025-03-13 09:15:35.995894 finished: adding observations from output file head_2_200_200 took: 0:00:00.026096
+2025-03-13 09:15:35.995894 starting: adding observations from output file head_2_282_0
+2025-03-13 09:15:35.995894 starting: adding observations from tabular output file '['head_2_282_0']'
+2025-03-13 09:15:35.995894 starting: reading list-style file: ..\pest_files\head_2_282_0
+2025-03-13 09:15:35.998903 finished: reading list-style file: ..\pest_files\head_2_282_0 took: 0:00:00.003009
+2025-03-13 09:15:35.998903 starting: building insfile for tabular output file head_2_282_0
+2025-03-13 09:15:36.002907 finished: building insfile for tabular output file head_2_282_0 took: 0:00:00.004004
+2025-03-13 09:15:36.003902 starting: adding observation from instruction file '..\pest_files\head_2_282_0.ins'
+2025-03-13 09:15:36.021178 finished: adding observation from instruction file '..\pest_files\head_2_282_0.ins' took: 0:00:00.017276
+2025-03-13 09:15:36.021178 finished: adding observations from tabular output file '['head_2_282_0']' took: 0:00:00.025284
+2025-03-13 09:15:36.021178 finished: adding observations from output file head_2_282_0 took: 0:00:00.025284
+2025-03-13 09:15:36.021178 starting: adding observations from output file head_2_300_-300
+2025-03-13 09:15:36.021178 starting: adding observations from tabular output file '['head_2_300_-300']'
+2025-03-13 09:15:36.022178 starting: reading list-style file: ..\pest_files\head_2_300_-300
+2025-03-13 09:15:36.024504 finished: reading list-style file: ..\pest_files\head_2_300_-300 took: 0:00:00.002326
+2025-03-13 09:15:36.024504 starting: building insfile for tabular output file head_2_300_-300
+2025-03-13 09:15:36.028504 finished: building insfile for tabular output file head_2_300_-300 took: 0:00:00.004000
+2025-03-13 09:15:36.028504 starting: adding observation from instruction file '..\pest_files\head_2_300_-300.ins'
+2025-03-13 09:15:36.045787 finished: adding observation from instruction file '..\pest_files\head_2_300_-300.ins' took: 0:00:00.017283
+2025-03-13 09:15:36.045787 finished: adding observations from tabular output file '['head_2_300_-300']' took: 0:00:00.024609
+2025-03-13 09:15:36.045787 finished: adding observations from output file head_2_300_-300 took: 0:00:00.024609
+2025-03-13 09:15:36.045787 starting: adding observations from output file head_2_300_300
+2025-03-13 09:15:36.045787 starting: adding observations from tabular output file '['head_2_300_300']'
+2025-03-13 09:15:36.046788 starting: reading list-style file: ..\pest_files\head_2_300_300
+2025-03-13 09:15:36.048124 finished: reading list-style file: ..\pest_files\head_2_300_300 took: 0:00:00.001336
+2025-03-13 09:15:36.049118 starting: building insfile for tabular output file head_2_300_300
+2025-03-13 09:15:36.053632 finished: building insfile for tabular output file head_2_300_300 took: 0:00:00.004514
+2025-03-13 09:15:36.053632 starting: adding observation from instruction file '..\pest_files\head_2_300_300.ins'
+2025-03-13 09:15:36.072251 finished: adding observation from instruction file '..\pest_files\head_2_300_300.ins' took: 0:00:00.018619
+2025-03-13 09:15:36.073250 finished: adding observations from tabular output file '['head_2_300_300']' took: 0:00:00.027463
+2025-03-13 09:15:36.073250 finished: adding observations from output file head_2_300_300 took: 0:00:00.027463
+2025-03-13 09:15:36.073250 starting: adding observations from output file head_2_424_0
+2025-03-13 09:15:36.073250 starting: adding observations from tabular output file '['head_2_424_0']'
+2025-03-13 09:15:36.073250 starting: reading list-style file: ..\pest_files\head_2_424_0
+2025-03-13 09:15:36.075248 finished: reading list-style file: ..\pest_files\head_2_424_0 took: 0:00:00.001998
+2025-03-13 09:15:36.076249 starting: building insfile for tabular output file head_2_424_0
+2025-03-13 09:15:36.080266 finished: building insfile for tabular output file head_2_424_0 took: 0:00:00.004017
+2025-03-13 09:15:36.080266 starting: adding observation from instruction file '..\pest_files\head_2_424_0.ins'
+2025-03-13 09:15:36.097844 finished: adding observation from instruction file '..\pest_files\head_2_424_0.ins' took: 0:00:00.017578
+2025-03-13 09:15:36.097844 finished: adding observations from tabular output file '['head_2_424_0']' took: 0:00:00.024594
+2025-03-13 09:15:36.097844 finished: adding observations from output file head_2_424_0 took: 0:00:00.024594
+2025-03-13 09:15:36.097844 starting: adding observations from output file head_2_50_-50
+2025-03-13 09:15:36.097844 starting: adding observations from tabular output file '['head_2_50_-50']'
+2025-03-13 09:15:36.098844 starting: reading list-style file: ..\pest_files\head_2_50_-50
+2025-03-13 09:15:36.101210 finished: reading list-style file: ..\pest_files\head_2_50_-50 took: 0:00:00.002366
+2025-03-13 09:15:36.101210 starting: building insfile for tabular output file head_2_50_-50
+2025-03-13 09:15:36.105520 finished: building insfile for tabular output file head_2_50_-50 took: 0:00:00.004310
+2025-03-13 09:15:36.105520 starting: adding observation from instruction file '..\pest_files\head_2_50_-50.ins'
+2025-03-13 09:15:36.122532 finished: adding observation from instruction file '..\pest_files\head_2_50_-50.ins' took: 0:00:00.017012
+2025-03-13 09:15:36.123532 finished: adding observations from tabular output file '['head_2_50_-50']' took: 0:00:00.025688
+2025-03-13 09:15:36.123532 finished: adding observations from output file head_2_50_-50 took: 0:00:00.025688
+2025-03-13 09:15:36.123532 starting: adding observations from output file head_2_50_50
+2025-03-13 09:15:36.123532 starting: adding observations from tabular output file '['head_2_50_50']'
+2025-03-13 09:15:36.123532 starting: reading list-style file: ..\pest_files\head_2_50_50
+2025-03-13 09:15:36.125532 finished: reading list-style file: ..\pest_files\head_2_50_50 took: 0:00:00.002000
+2025-03-13 09:15:36.126532 starting: building insfile for tabular output file head_2_50_50
+2025-03-13 09:15:36.129549 finished: building insfile for tabular output file head_2_50_50 took: 0:00:00.003017
+2025-03-13 09:15:36.130526 starting: adding observation from instruction file '..\pest_files\head_2_50_50.ins'
+2025-03-13 09:15:36.148718 finished: adding observation from instruction file '..\pest_files\head_2_50_50.ins' took: 0:00:00.018192
+2025-03-13 09:15:36.149718 finished: adding observations from tabular output file '['head_2_50_50']' took: 0:00:00.026186
+2025-03-13 09:15:36.149718 finished: adding observations from output file head_2_50_50 took: 0:00:00.026186
+2025-03-13 09:15:36.149718 starting: adding observations from output file head_2_70_0
+2025-03-13 09:15:36.149718 starting: adding observations from tabular output file '['head_2_70_0']'
+2025-03-13 09:15:36.149718 starting: reading list-style file: ..\pest_files\head_2_70_0
+2025-03-13 09:15:36.152393 finished: reading list-style file: ..\pest_files\head_2_70_0 took: 0:00:00.002675
+2025-03-13 09:15:36.152393 starting: building insfile for tabular output file head_2_70_0
+2025-03-13 09:15:36.156144 finished: building insfile for tabular output file head_2_70_0 took: 0:00:00.003751
+2025-03-13 09:15:36.157561 starting: adding observation from instruction file '..\pest_files\head_2_70_0.ins'
+2025-03-13 09:15:36.174483 finished: adding observation from instruction file '..\pest_files\head_2_70_0.ins' took: 0:00:00.016922
+2025-03-13 09:15:36.175494 finished: adding observations from tabular output file '['head_2_70_0']' took: 0:00:00.025776
+2025-03-13 09:15:36.176498 finished: adding observations from output file head_2_70_0 took: 0:00:00.026780
+2025-03-13 09:15:36.261606 forward_run line:pyemu.os_utils.run(r'..\exe\mf6.exe pomp.nam')
+

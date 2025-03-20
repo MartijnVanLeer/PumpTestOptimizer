@@ -1,10 +1,11 @@
+"""Setup generic pest files with pilot points based on MF6 model in /ws"""
 #%%
 import pyemu
 import pypestutils.helpers as helpers
 import os
 import pandas as pd
 import numpy as np
-from pest_funcs import *
+from functions.pest_funcs import *
 import flopy
 #Load paths
 name = 'pomp'
@@ -49,7 +50,7 @@ for subdir, dirs, files in os.walk(OrgDir):
         if f.startswith('head_0') or f.startswith('head_2'):
             pf.add_observations(f,f'{f}.ins',index_cols = 'time',ofile_sep= ',', use_cols='HEAD', obsgp = f)
 
-#model run cmd
+#forward model run command
 pf.mod_sys_cmds.append(f'{mfexe} {name}.nam')
 
 #build pst file

@@ -2,7 +2,7 @@
 import pandas as pd
 import os
 import numpy as np
-import VariogramFitting
+import functions.ErrorMetrics
 from tqdm import tqdm
 #Get 'real' realizations
 realdf = pd.read_csv(os.path.join('..', 'inter', 'Realizations.csv'), index_col = 'index')
@@ -30,6 +30,7 @@ kfields = []
 RealK = []
 pestfiles = []
 CorLenError = []
+
 #read pest run folders and append to lists
 for folder in tqdm(runs, 'Reading files..'):
         for subdir, dirs, files in os.walk(os.path.join(resultsdir, folder)):
@@ -58,10 +59,10 @@ for folder in tqdm(runs, 'Reading files..'):
                     RMSE.append(np.sqrt(np.mean((np.log10(realdf[simref[-1]].values) - np.log10(getk))**2)))
                     NRMSE.append(RMSE[-1]/np.std(np.log10(getk)))
                     MAE.append(np.mean(abs(np.log10(realdf[simref[-1]].values) - np.log10(getk))))
-                    r2.append(VariogramFitting.calculate_r2(np.log10(realdf[simref[-1]].values), np.log10(getk)))
+                    r2.append(ErrorMetrics.calculate_r2(np.log10(realdf[simref[-1]].values), np.log10(getk)))
                     VarRatio.append(np.var(np.log10(realdf[simref[-1]].values))/np.var(np.log10(getk)))
                     #fit variogram
-                    sill,fitcorlen = VariogramFitting.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(getk[realdf.zone.values])),num_bins = 30)
+                    sill,fitcorlen = ErrorMetrics.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(getk[realdf.zone.values])),num_bins = 30)
                     sills.append(sill)
                     Fitted_corlen.append(fitcorlen)
                     CorLenError.append((int(simcorlen[-1])-fitcorlen)/int(simcorlen[-1]))
@@ -83,6 +84,7 @@ fitdf['MAE'] = MAE
 fitdf['R²'] = r2
 fitdf['VarRatio'] =VarRatio
 fitdf['fitcorlen'] = Fitted_corlen
+fitdf['CorLenError'] = CorLenError
 fitdf['sill'] = sills
 fitdf.rename_axis('index', inplace = True)
 #construct xarray

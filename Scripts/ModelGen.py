@@ -1,6 +1,6 @@
 #%% Import stuff
 import os
-from grid_funcs import *
+from functions.grid_funcs import *
 import shutil
 import matplotlib.pyplot as plt
 import pandas as pd

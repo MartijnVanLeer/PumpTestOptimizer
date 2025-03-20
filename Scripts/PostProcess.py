@@ -16,24 +16,24 @@ mfsim = flopy.mf6.MFSimulation.load(sim_ws=os.path.join('..', 'ws'), verbosity_l
 gwf = mfsim.get_model()
 
 
-#%%
+#%% Plot calibrated fields
 
 ####################
-corlen = 141
+corlen = 70
 simno = 0
 obsno = 5
 angle = 0
 welldist = 0.5
 ###################
-fig, axs = plt.subplots(2,4, dpi = 600,constrained_layout =True, sharex = True, sharey = True)
+fig, axs = plt.subplots(3,4, dpi = 600,constrained_layout =True, sharex = True, sharey = True)
+fig.set_size_inches(7.5,6)
 axs = axs.ravel()
-
-for obsno in range(1,9):
+crop = ds.where(ds.corlen == corlen,drop = True)
+crop = crop.where(crop.simno == simno,drop = True)
+crop = crop.where(crop.angle == angle,drop = True)
+for obsno in range(1,12):
     ax = axs[obsno-1]
-    sel = ds.where(ds.corlen == corlen,drop = True)
-    sel = sel.where(ds.simno == simno,drop = True)
-    sel = sel.where(ds.obsno == obsno,drop = True)
-    sel = sel.where(ds.angle == angle,drop = True)
+    sel = crop.where(crop.obsno == obsno,drop = True)
 
     if obsno == 1:
         sel = sel.where(ds.welldist == welldist, drop = True)
@@ -58,23 +58,24 @@ for obsno in range(1,9):
     ax.set_yticks([])
 
     plot_obs.plot.scatter(x = 'x', y = 'y',ax =ax, s = 1, color= 'red', zorder = 3)
-    ax.set_title(round(sel.RMSE.values[0],3))
     # ppdf.plot.scatter(x = 'x', y = 'y',ax =ax, s = 1, color= 'white',zorder = 2)
     # fig.tight_layout()
+
 fig.subplots_adjust(hspace = 0.1, wspace = 0.1)
-#%%
+#%% Plot Real K field
 fig,ax = plt.subplots()
 pmv = flopy.plot.PlotMapView(gwf, extent = [-r, r, -r, r], ax = ax)
 pmv.plot_array(np.log10(sel.RealK),vmin = vmin, vmax = vmax)
 ax.set_aspect('equal')
-# %%
+# %% Plot Results
 import seaborn as sns
-fig, ax = plt.subplots(7,4, constrained_layout = True, sharex = True, sharey = 'row')
-fig.set_size_inches(7,12)
-df = ds[['RMSE','NRMSE','EV','MAE','R²','obsno', 'fitcorlen','sill','simno','corlen']].to_dataframe().reset_index()
-df =df[df.obsno > 1]
+fig, ax = plt.subplots(6,4, constrained_layout = True, sharex = True, sharey = 'row')
+fig.set_size_inches(12,7)
+
+df = ds[['RMSE','MAE','R²','obsno','VarRatio', 'fitcorlen','sill','simno','corlen']].to_dataframe().reset_index()
+df = df[df.obsno != 1]
 sargs = {'s' : 3}
-for i,metric in enumerate(['RMSE','NRMSE','MAE','R²','fitcorlen', 'sill','EV']):
+for i,metric in enumerate(['RMSE','MAE','R²','VarRatio','fitcorlen', 'sill']):
     for j,corlen in enumerate([70,141,282]):
         sns.scatterplot(df[df.corlen == corlen], x = 'obsno',y = metric,hue = 'simno',
                       s = 15,ax = ax[i,j], alpha = 0.5, edgecolor = 'black')
@@ -85,6 +86,8 @@ for i,metric in enumerate(['RMSE','NRMSE','MAE','R²','fitcorlen', 'sill','EV'])
             ax[i,j].set_title(f'L = {corlen}')
         if metric == 'fitcorlen':
             ax[i,j].hlines(corlen, 1,df.obsno.max(), linestyle = '--',color = 'black')
+        if metric == 'VarRatio':
+            ax[i,j].set_yscale('log')
     sns.scatterplot(df, x = 'obsno',y = metric,hue = 'corlen',
                 ax = ax[i,3], s = 15,alpha = 0.5)
     
@@ -94,8 +97,8 @@ for i,metric in enumerate(['RMSE','NRMSE','MAE','R²','fitcorlen', 'sill','EV'])
 ax[0,3].set_title('All')
 
 
-
-
-
-
+# %%
+df = ds[['RMSE','obsno','corlen','welldist']].to_dataframe().reset_index()
+df = df[df.obsno == 1]
+sns.boxplot(df, x = 'welldist', y = 'RMSE', hue = 'corlen')
 # %%
