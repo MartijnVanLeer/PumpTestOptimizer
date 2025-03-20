@@ -37,9 +37,13 @@ shutil.copytree(os.path.join('..', 'ws'), rundir, dirs_exist_ok= True)
 #load MF from new folder
 sim = flopy.mf6.MFSimulation.load(sim_ws=rundir, lazy_io=True,verbosity_level=0, exe_name=os.path.join('..', 'exe','mf6'))
 gwf = sim.get_model('pomp')
-obs_data = pd.DataFrame()
+
+#Names of obs in MF6 model
 obsnames = gwf.obs.continuous.data.keys()
 
+obs_data = pd.DataFrame()
+
+#Run model with realization and assign to df
 for col in tqdm(zonedf.columns[3:]):
     zonedf[col].to_csv(os.path.join(rundir, 'pomp.npf_k_layer2.txt'), header = False, index = False)
     success, buff = sim.run_simulation(report=True)
