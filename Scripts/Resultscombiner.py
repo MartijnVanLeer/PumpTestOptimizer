@@ -55,7 +55,7 @@ for folder in tqdm(runs, 'Reading files..'):
                     with open(pestfile, 'r') as file:
                         pestfiles.append(file.read())
                     #assign only modelled RealK to list
-                    RealK.append(maskeddf[simref[-1]].values)
+                    RealK.append(realdf[simref[-1]].values)
 
                     #calc RMSE of Kreal vs Kcal
                     RMSE.append(np.sqrt(np.mean((np.log10(maskeddf[simref[-1]].values) - np.log10(maskk))**2)))
