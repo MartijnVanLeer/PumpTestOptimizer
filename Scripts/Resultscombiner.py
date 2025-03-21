@@ -46,23 +46,25 @@ for folder in tqdm(runs, 'Reading files..'):
                     angle.append(dir.split('_')[5])
                     dirname.append(dir)
                     #read calibrated K
-                    getk = pd.read_csv(os.path.join(resultsdir, folder,dir,'pomp.npf_k_layer2.txt'), sep = '   ', header= None, engine = 'python').T
-                    getk = getk[0].values
-                    kfields.append(getk)
+                    fullk = pd.read_csv(os.path.join(resultsdir, folder,dir,'pomp.npf_k_layer2.txt'), sep = '   ', header= None, engine = 'python').T
+                    fullk = fullk[0].values
+                    kfields.append(fullk)
+                    maskk = fullk[realdf.zone.values]
                     #read pest files for all runinfo
                     pestfile = (os.path.join(resultsdir, folder,dir,'eg.pst'))
                     with open(pestfile, 'r') as file:
                         pestfiles.append(file.read())
                     #assign only modelled RealK to list
-                    RealK.append(realdf[simref[-1]].values)
+                    RealK.append(maskeddf[simref[-1]].values)
+
                     #calc RMSE of Kreal vs Kcal
-                    RMSE.append(np.sqrt(np.mean((np.log10(realdf[simref[-1]].values) - np.log10(getk))**2)))
-                    NRMSE.append(RMSE[-1]/np.std(np.log10(getk)))
-                    MAE.append(np.mean(abs(np.log10(realdf[simref[-1]].values) - np.log10(getk))))
-                    r2.append(ErrorMetrics.calculate_r2(np.log10(realdf[simref[-1]].values), np.log10(getk)))
-                    VarRatio.append(np.var(np.log10(realdf[simref[-1]].values))/np.var(np.log10(getk)))
+                    RMSE.append(np.sqrt(np.mean((np.log10(maskeddf[simref[-1]].values) - np.log10(maskk))**2)))
+                    NRMSE.append(RMSE[-1]/np.std(np.log10(maskk)))
+                    MAE.append(np.mean(abs(np.log10(maskeddf[simref[-1]].values) - np.log10(maskk))))
+                    r2.append(ErrorMetrics.calculate_r2(np.log10(maskeddf[simref[-1]].values), np.log10(maskk)))
+                    VarRatio.append(np.var(np.log10(maskeddf[simref[-1]].values))/np.var(np.log10(maskk)))
                     #fit variogram
-                    sill,fitcorlen = ErrorMetrics.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(getk[realdf.zone.values])),num_bins = 30)
+                    sill,fitcorlen = ErrorMetrics.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(maskk)),num_bins = 30)
                     sills.append(sill)
                     Fitted_corlen.append(fitcorlen)
                     CorLenError.append(abs(int(simcorlen[-1])-fitcorlen)/int(simcorlen[-1]))
@@ -89,7 +91,7 @@ fitdf['sill'] = sills
 fitdf.rename_axis('index', inplace = True)
 #construct xarray
 ds = fitdf.to_xarray()
-ds = ds.assign_coords(cellid = range(len(getk))) #cellid for realizations
+ds = ds.assign_coords(cellid = range(len(realdf))) #cellid for realizations
 kfieldsfix = np.array(kfields)
 realkfix = np.array(RealK)
 ds['CalibratedK'] = (['index', 'cellid'], kfieldsfix)
