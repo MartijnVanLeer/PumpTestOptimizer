@@ -65,7 +65,7 @@ for folder in tqdm(runs, 'Reading files..'):
                     sill,fitcorlen = ErrorMetrics.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(getk[realdf.zone.values])),num_bins = 30)
                     sills.append(sill)
                     Fitted_corlen.append(fitcorlen)
-                    CorLenError.append((int(simcorlen[-1])-fitcorlen)/int(simcorlen[-1]))
+                    CorLenError.append(abs(int(simcorlen[-1])-fitcorlen)/int(simcorlen[-1]))
 
 print('constructing netcdf..')
 #assign lists to df

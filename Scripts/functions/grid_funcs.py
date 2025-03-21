@@ -13,7 +13,18 @@ from sklearn.metrics import r2_score
 import ttim as ttm
 
 
-def circle_poly(radius):
+def circle_poly(radius:int) -> list:
+    """Create polygon of approximate circle
+
+    Parameters
+    ----------
+    radius : int
+
+    Returns
+    -------
+    list
+        x,y coordinates in list
+    """    
     theta = np.arange(0.0, 2 * np.pi, 0.2)
     x = radius * np.cos(theta)
     y = radius * np.sin(theta)
@@ -21,25 +32,48 @@ def circle_poly(radius):
     circle_poly.append(circle_poly[0])
     return circle_poly
 
-def MakeGrid(ws, radius, max_area, areas, dists):
+def MakeGrid(ws:str, radius:float, max_area:list, areas:list, dists:list):
+    """Create circular voronoi grid with varying cell size
+
+    Parameters
+    ----------
+    ws : str
+        folder with modflow model
+    radius : float
+        Radius of circular grid
+    max_area : float
+        maximum area of largest cells at outer boundaryin triangular grid. voronoi grid cells become larger. 
+    areas : list
+        maximum area of cells per zone in triangular grid. voronoi grid cells become larger. 
+    dists : list
+        radial distances of zones
+
+    Returns
+    -------
+    _type_
+        modelgrid, intersect boject, disv_gridprops dict and tri
+    """    
     wstri = os.path.join(ws,'tri')
     if not os.path.isdir(wstri):
         os.makedirs(wstri)
     tri = Triangle(angle=0, model_ws=wstri, exe_name = os.path.join('..', 'exe','triangle'), nodes = np.array([[0,0]]))
     areas = np.array(areas)
+    #create full triangular grid
     tri.add_polygon(circle_poly(radius))
     tri.add_region((0,radius-1),0, maximum_area = max_area)
+    #Refine regions
     for no,x in enumerate(dists):
         tri.add_polygon(circle_poly(x))
         tri.add_region((0,x),no+1, maximum_area = areas[no])
     tri.add_region((0,0),no+2, maximum_area = areas[no+1])
     tri.build(verbose=False)
+    #Convert to Voronoi
     vor = VoronoiGrid(tri)
     gridprops = vor.get_gridprops_vertexgrid()
     disv_gridprops = vor.get_disv_gridprops()
     VG = VertexGrid(**gridprops)
     GI = flopy.utils.GridIntersect(VG)
-    return VG, GI,disv_gridprops,tri
+    return VG, GI,disv_gridprops
 
 def PlotGrid(VG, r = 200, ObsR = []):
     fig,ax = plt.subplots(2)
@@ -55,7 +89,21 @@ def PlotGrid(VG, r = 200, ObsR = []):
     ax[1].scatter(0,0)
 
 
-def get_zonearray(zonedist,VG,ws):
+def get_zonearray(zonedist : int,VG):
+    """Create binary array which is true for all cells within a radius
+
+    Parameters
+    ----------
+    zonedist : int
+        radial distance for zone boundary
+    VG : VoronoiGrid
+        _description_
+
+    Returns
+    -------
+    np.array
+        binary array with zones
+    """    
     circle = Polygon(circle_poly(zonedist))
     zonearray = np.ones(VG.ncpl, dtype=bool)
     for node in range(VG.ncpl):

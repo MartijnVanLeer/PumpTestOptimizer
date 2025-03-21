@@ -45,7 +45,7 @@ else:
 
 gwf,sim = Init_Modflow(ws, name,gridprops, radius,GI, k,D,c, Q, 'open', ObsCoords, ss, nlay, Tlen, Tsteps,Tmult )
 
-zonearray = get_zonearray(zonedist-5,VG,ws)
+zonearray = get_zonearray(zonedist-5,VG)
 
 df = pd.DataFrame({'x' : gwf.modelgrid.xcellcenters, 
                    'y' : gwf.modelgrid.ycellcenters,
