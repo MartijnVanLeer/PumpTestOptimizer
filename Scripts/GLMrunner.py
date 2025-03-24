@@ -16,14 +16,14 @@ glm = os.path.join('..','exe','pestpp-glm')
 SL = np.sqrt(20000)
 
 #Loop over number of iterations
-for obsno in range(9,17):
+for obsno in range(2,17):
     runstring = f'{obsno}obs'
     #make results folder
     if not os.path.isdir(os.path.join('..', runstring)): 
         os.mkdir(os.path.join('..', runstring))
     testonce = True
     #loop over realizations
-    for sim in ['sim_70_0', 'sim_141_0', 'sim_282_0','sim_70_1', 'sim_141_1', 'sim_282_1']:
+    for sim in ['sim_70_2','sim_70_3', 'sim_141_2','sim_141_3', 'sim_282_2','sim_282_3']:
         # for fac in [0.5,1,2,3]:
             #Loop over angles
             for angle in range(8):
@@ -63,7 +63,7 @@ for obsno in range(9,17):
                 pyemu.os_utils.start_workers(os.path.join(PestDir), # the folder which contains the "template" PEST dataset
                                             os.path.join(glm), #the PEST software version we want to run
                                             'eg.pst', # the control file to use with PEST
-                                            num_workers=8, #how many agents to deploy
+                                            num_workers=12, #how many agents to deploy
                                             worker_root='..', #where to deploy the agent directories; relative to where python is running
                                             master_dir= master_dir,
                                             verbose = True
