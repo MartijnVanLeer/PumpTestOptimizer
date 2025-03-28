@@ -26,7 +26,7 @@ for obsno in range(2,17):
         os.mkdir(os.path.join('..', runstring))
     testonce = True
     #loop over realizations
-    for sim in ['sim_70_0','sim_70_1','sim_70_2''sim_70_3','sim_141_0','sim_141_1','sim_141_2''sim_141_3','sim_282_0','sim_282_1','sim_282_2','sim_282_2']:
+    for sim in ['sim_70_0','sim_70_1','sim_70_2''sim_70_3','sim_141_0','sim_141_1','sim_141_2''sim_141_3','sim_282_0','sim_282_1','sim_282_2','sim_282_3']:
         # for fac in [0.5,1,2,3]:
             #Loop over angles
             for angle in range(8):
@@ -105,11 +105,7 @@ for obsno in range(2,17):
                 shutil.move(master_dir, os.path.join('..','Results',runstring,os.path.basename(master_dir)))
 
 # %%
-fullk = pd.read_csv(os.path.join('..','Results',runstring,os.path.basename(master_dir),'pomp.npf_k_layer2.txt'), sep = '   ', header= None, engine = 'python').T
-import matplotlib.pyplot as plt
-fig, ax = plt.subplots()
-pmv = flopy.plot.PlotMapView(gwf, extent = (-500,500,-500,500), ax = ax)
-pmv.plot_array(np.log10(fullk[0].values))
+
 
 
 # %%
