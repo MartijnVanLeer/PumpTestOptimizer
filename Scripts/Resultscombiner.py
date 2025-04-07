@@ -74,7 +74,7 @@ for folder in tqdm(runs, 'Reading files..'):
                     sill_cal,fitcorlen_cal = ErrorMetrics.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(maskk)),num_bins = 30)
                     sills.append(sill_cal)
                     Fitted_corlen.append(fitcorlen_cal)
-                    sill_real,fitcorlen_real = ErrorMetrics.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(maskeddf[simref[-1]])),num_bins = 30)
+                    sill_real,fitcorlen_real = ErrorMetrics.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(maskeddf[simref[-1]].values)),num_bins = 30)
                     Fitted_corlen_real.append(fitcorlen_real)
                     Fitted_sill_real.append(sill_real)
                     CorLenError.append(abs(fitcorlen_real-fitcorlen_cal)/fitcorlen_real)
