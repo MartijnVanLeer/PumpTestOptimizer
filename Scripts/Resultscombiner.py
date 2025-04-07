@@ -25,12 +25,15 @@ MAE = []
 r2 = []
 VarRatio = []
 Fitted_corlen = []
+Fitted_corlen_real = [] 
+Fitted_sill_real = []
 sills = []
 kfields = []
 RealK = []
 pestfiles = []
 CorLenError = []
-
+SillError = []
+fixed = []
 #read pest run folders and append to lists
 for folder in tqdm(runs, 'Reading files..'):
         for subdir, dirs, files in os.walk(os.path.join(resultsdir, folder)):
@@ -44,6 +47,10 @@ for folder in tqdm(runs, 'Reading files..'):
                     wd = None if wd == '' else wd #only 1obs has this value
                     welldist.append(wd)
                     angle.append(dir.split('_')[5])
+                    if dir.split('_')[-1] == 'fixed':
+                         fixed.append(True)
+                    else:
+                         fixed.append(False)
                     dirname.append(dir)
                     #read calibrated K
                     fullk = pd.read_csv(os.path.join(resultsdir, folder,dir,'pomp.npf_k_layer2.txt'), sep = '   ', header= None, engine = 'python').T
@@ -64,10 +71,14 @@ for folder in tqdm(runs, 'Reading files..'):
                     r2.append(ErrorMetrics.calculate_r2(np.log10(maskeddf[simref[-1]].values), np.log10(maskk)))
                     VarRatio.append(np.var(np.log10(maskeddf[simref[-1]].values))/np.var(np.log10(maskk)))
                     #fit variogram
-                    sill,fitcorlen = ErrorMetrics.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(maskk)),num_bins = 30)
-                    sills.append(sill)
-                    Fitted_corlen.append(fitcorlen)
-                    CorLenError.append(abs(int(simcorlen[-1])-fitcorlen)/int(simcorlen[-1]))
+                    sill_cal,fitcorlen_cal = ErrorMetrics.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(maskk)),num_bins = 30)
+                    sills.append(sill_cal)
+                    Fitted_corlen.append(fitcorlen_cal)
+                    sill_real,fitcorlen_real = ErrorMetrics.fit_gaussian_variogram(maskeddf.x.values, maskeddf.y.values, np.squeeze(np.log10(maskeddf[simref[-1]])),num_bins = 30)
+                    Fitted_corlen_real.append(fitcorlen_real)
+                    Fitted_sill_real.append(sill_real)
+                    CorLenError.append(abs(fitcorlen_real-fitcorlen_cal)/fitcorlen_real)
+                    SillError.append(abs(sill_real - sill_cal)/sill_real)
 
 print('constructing netcdf..')
 #assign lists to df
@@ -78,6 +89,7 @@ fitdf['simref'] = np.array(simref, dtype = 'str')
 fitdf['angle'] = np.array(angle,dtype = 'int')
 fitdf['obsno'] = np.array(obsno, dtype = 'int')
 fitdf['dirname'] = np.array(dirname, dtype = 'str')
+fitdf['fixed'] = fixed
 fitdf['welldist'] = np.array(welldist,dtype= float)
 fitdf['pst'] = np.array(pestfiles, dtype = 'str') #save Pst objects as pickled
 fitdf['RMSE'] = RMSE
@@ -86,8 +98,11 @@ fitdf['MAE'] = MAE
 fitdf['R²'] = r2
 fitdf['VarRatio'] =VarRatio
 fitdf['fitcorlen'] = Fitted_corlen
+fitdf['fitcorlen_real'] = Fitted_corlen_real
+fitdf['sill_real']=Fitted_sill_real
 fitdf['CorLenError'] = CorLenError
 fitdf['sill'] = sills
+fitdf['SillError'] = SillError
 fitdf.rename_axis('index', inplace = True)
 #construct xarray
 ds = fitdf.to_xarray()

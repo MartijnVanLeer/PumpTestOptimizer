@@ -19,20 +19,20 @@ gwf = mfsim.get_model()
 #%% Plot calibrated fields
 
 ####################
-corlen = 70
-simno = 0
+corlen = 141
+simno = 3
 obsno = 5
 angle = 0
 welldist = 0.5
 ###################
-fig, axs = plt.subplots(3,4, dpi = 600,constrained_layout =True, sharex = True, sharey = True)
-fig.set_size_inches(7.5,6)
+fig, axs = plt.subplots(4,4, dpi = 600,constrained_layout =True, sharex = True, sharey = True)
+fig.set_size_inches(7.5,7.5)
 axs = axs.ravel()
 crop = ds.where(ds.corlen == corlen,drop = True)
 crop = crop.where(crop.simno == simno,drop = True)
 crop = crop.where(crop.angle == angle,drop = True)
-for obsno in range(1,12):
-    ax = axs[obsno-1]
+for obsno in range(2,17):
+    ax = axs[obsno-2]
     sel = crop.where(crop.obsno == obsno,drop = True)
 
     if obsno == 1:
@@ -60,27 +60,31 @@ for obsno in range(1,12):
     plot_obs.plot.scatter(x = 'x', y = 'y',ax =ax, s = 1, color= 'red', zorder = 3)
     # ppdf.plot.scatter(x = 'x', y = 'y',ax =ax, s = 1, color= 'white',zorder = 2)
     # fig.tight_layout()
-
-fig.subplots_adjust(hspace = 0.1, wspace = 0.1)
-#%% Plot Real K field
-fig,ax = plt.subplots()
-pmv = flopy.plot.PlotMapView(gwf, extent = [-r, r, -r, r], ax = ax)
+pmv = flopy.plot.PlotMapView(gwf, extent = [-r, r, -r, r], ax = axs[-1])
 pmv.plot_array(np.log10(sel.RealK),vmin = vmin, vmax = vmax)
-ax.set_aspect('equal')
+axs[-1].set_aspect('equal')
+axs[-1].set_xlabel('x')
+fig.subplots_adjust(hspace = 0.1, wspace = 0.1)
+
 # %% Plot Results
 import seaborn as sns
-fig, ax = plt.subplots(6,4, constrained_layout = True, sharex = True, sharey = 'row')
-fig.set_size_inches(12,7)
+fig, ax = plt.subplots(7,4, dpi = 600,constrained_layout = True, sharex = True, sharey = 'row')
+fig.set_size_inches(8,12)
 
-df = ds[['RMSE','MAE','R²','obsno','VarRatio', 'fitcorlen','sill','simno','corlen']].to_dataframe().reset_index()
+df = ds[['RMSE','MAE','R²','obsno','VarRatio', 'fitcorlen','CorLenError','sill','simno','corlen','angle']].to_dataframe().reset_index()
 df = df[df.obsno != 1]
+# df = df[df.simno.isin([0,1])]
 sargs = {'s' : 3}
-for i,metric in enumerate(['RMSE','MAE','R²','VarRatio','fitcorlen', 'sill']):
+for i,metric in enumerate(['RMSE','MAE','R²','fitcorlen', 'CorLenError','sill','VarRatio']):
     for j,corlen in enumerate([70,141,282]):
         sns.scatterplot(df[df.corlen == corlen], x = 'obsno',y = metric,hue = 'simno',
-                      s = 15,ax = ax[i,j], alpha = 0.5, edgecolor = 'black')
-        sns.regplot(df[df.corlen == corlen], x = 'obsno',y = metric,lowess=True, 
-                    ax = ax[i,j], scatter = False, truncate = True, line_kws={'linewidth' : 1, 'color' : 'red'})
+                      s = 10,ax = ax[i,j], alpha = 0.3, edgecolor = 'black')
+        # sns.regplot(df[df.corlen == corlen], x = 'obsno',y = metric,lowess=True, 
+        #             ax = ax[i,j], scatter = False, truncate = True, line_kws={'linewidth' : 1, 'color' : 'red'})
+        sns.lineplot(data = df[df.corlen == corlen], x = 'obsno',y = metric,errorbar=None, 
+                     estimator=np.median, ax = ax[i,j], hue = 'simno')
+        sns.lineplot(data = df[df.corlen == corlen], x = 'obsno',y = metric,errorbar=None, 
+                estimator=np.mean, ax = ax[i,j], color = 'red')
         ax[i,j].legend().remove()
         if i == 0:
             ax[i,j].set_title(f'L = {corlen}')
@@ -88,11 +92,13 @@ for i,metric in enumerate(['RMSE','MAE','R²','VarRatio','fitcorlen', 'sill']):
             ax[i,j].hlines(corlen, 1,df.obsno.max(), linestyle = '--',color = 'black')
         if metric == 'VarRatio':
             ax[i,j].set_yscale('log')
+        if metric == 'CorLenError':
+            ax[i,j].set_yscale('log')
     sns.scatterplot(df, x = 'obsno',y = metric,hue = 'corlen',
-                ax = ax[i,3], s = 15,alpha = 0.5)
-    
-    sns.regplot(df, x = 'obsno',y = metric,lowess=True, scatter = False, 
-                ax = ax[i,3], truncate = True, line_kws={'linewidth' : 1, 'color' : 'red'})
+                ax = ax[i,3], s = 10,alpha = 0.3)
+    sns.lineplot(data = df, x = 'obsno',y = metric,estimator=np.median, ax = ax[i,3])
+    # sns.regplot(df, x = 'obsno',y = metric,lowess=True, scatter = False, 
+    #             ax = ax[i,3], truncate = True, line_kws={'linewidth' : 1, 'color' : 'red'})
     ax[i,3].legend().remove()
 ax[0,3].set_title('All')
 
@@ -100,5 +106,5 @@ ax[0,3].set_title('All')
 # %%
 df = ds[['RMSE','obsno','corlen','welldist']].to_dataframe().reset_index()
 df = df[df.obsno == 1]
-sns.boxplot(df, x = 'welldist', y = 'RMSE', hue = 'corlen')
+sns.boxplot(df, x = 'welldist', y = 'RMSE')
 # %%
