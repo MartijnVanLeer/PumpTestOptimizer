@@ -17,7 +17,7 @@ areas = [50000,10000,2500,1200, zonearea]
 dists = [1500,1000,600,zonedist]
 
 #Parameter settings
-k = np.array([2.5,5]) #K in m/d
+k = np.array([5,5]) #K in m/d
 D = 10 #in m 
 c = 400 #in d
 ss = 0.00001 
@@ -43,7 +43,7 @@ if not os.path.isdir(ws):
 else:
     shutil.rmtree(ws, ignore_errors=True)
 
-gwf,sim = Init_Modflow(ws, name,gridprops, radius,GI, k,D,c, Q, 'open', ObsCoords, ss, nlay, Tlen, Tsteps,Tmult )
+gwf,sim = Init_Modflow(ws, name,gridprops, radius,GI, k,D,c, Q, 'closed', ObsCoords, ss, nlay, Tlen, Tsteps,Tmult )
 
 zonearray = get_zonearray(zonedist-5,VG)
 

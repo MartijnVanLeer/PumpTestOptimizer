@@ -118,12 +118,9 @@ def Init_Modflow(ws, name,gridprops,radius, GI, k,D,c, Q,TBC, ObsCoords, ss=0.00
     gwf = flopy.mf6.ModflowGwf(sim, modelname=name, save_flows=True)
     tdis = flopy.mf6.ModflowTdis(sim, time_units="DAYS",nper = 1, perioddata=[Tlen, Tsteps, Tmult])
     ims = flopy.mf6.ModflowIms(sim, print_option="SUMMARY", complexity="complex", outer_dvclose=1.0e-8,inner_dvclose=1.0e-8)
-    if nlay == 1:
-        disv = flopy.mf6.ModflowGwfdisv(gwf, nlay=nlay, **gridprops, top=D, botm=0)
-        npf = flopy.mf6.ModflowGwfnpf(gwf,k=k/24)
-    elif nlay == 3:
-        disv = flopy.mf6.ModflowGwfdisv(gwf, nlay=nlay, **gridprops, top=0, botm=[-D, -2*D, -3*D])
-        npf = flopy.mf6.ModflowGwfnpf(gwf,k=[k[0]/24,{'filename' : 'pomp.npf_k_layer2.txt','factor' :1.0,'iprn':1, 'data':(D/c)/24},k[1]/24],save_specific_discharge=True)
+    disv = flopy.mf6.ModflowGwfdisv(gwf, nlay=nlay, **gridprops, top=0, botm=[-D, -2*D, -3*D])
+    npf = flopy.mf6.ModflowGwfnpf(gwf,k=[k[0]/24,(D/c)/24,k[1]/24],save_specific_discharge=False)
+    npf.set_all_data_external(True)
     ic = flopy.mf6.ModflowGwfic(gwf,strt = 0)
     oc = flopy.mf6.ModflowGwfoc(gwf,budget_filerecord=f"{name}.bud",head_filerecord=f"{name}.hds",
         saverecord=None,  printrecord=None)
@@ -132,6 +129,7 @@ def Init_Modflow(ws, name,gridprops,radius, GI, k,D,c, Q,TBC, ObsCoords, ss=0.00
     wellcell = GI.intersect(Point([0,0]))[0][0]
     # ssa[-1,wellcell] = 1
     sto = flopy.mf6.ModflowGwfsto(gwf,pname="sto",ss=ssa,steady_state=False,transient=True)
+    sto.set_all_data_external(True)
     # chd = Set_CHD(gwf, radius,GI,nlay)
     wel = flopy.mf6.ModflowGwfwel(gwf, stress_period_data=[[(nlay-1,wellcell), -Q]])
 

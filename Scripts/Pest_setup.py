@@ -23,8 +23,9 @@ sr = Get_SR(OrgDir, name)
 
 #Initiate PEST
 pf = pyemu.utils.PstFrom(OrgDir,PestDir, remove_existing=True,spatial_reference=sr)
-#Fix inputfile
-fix_k(PestDir, 'pomp.npf_k_layer2.txt')
+#Fix inputfiles
+for n in [1,2,3]:
+    fix_k(PestDir, f'pomp.npf_k_layer{n}.txt')
 
 #Pilot point locations and settings
 SL = int(np.sqrt(20000))
@@ -43,6 +44,11 @@ gs = pyemu.geostats.GeoStruct(variograms=v,nugget=0.0,transform = 'log')
 #Add pilotpionts as parameters
 pf.add_parameters('pomp.npf_k_layer2.txt', 'pilotpoints', transform= 'log', geostruct=gs,upper_bound = 1000, lower_bound = 0.001,
                 pp_options = pp_opt, zone_array=np.array([zonearray.zone.values.astype(int)]))
+pf.add_parameters('pomp.npf_k_layer1.txt', 'constant', transform= 'log', geostruct=gs,upper_bound = 1000, lower_bound = 0.001)
+pf.add_parameters('pomp.npf_k_layer3.txt', 'constant', transform= 'log', geostruct=gs,upper_bound = 1000, lower_bound = 0.001)
+
+for lay in [1,2,3]:
+    pf.add_parameters(f'pomp.sto_ss_layer{lay}.txt', 'constant', transform= 'log', geostruct=gs,upper_bound = 1000, lower_bound = 0.001)
 
 #Add all observations
 for subdir, dirs, files in os.walk(OrgDir):

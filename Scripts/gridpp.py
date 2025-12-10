@@ -38,10 +38,10 @@ axins.set_aspect('equal')
 locs = [-564,-423, -282,-141,0,141,282,423,564]
 labels = [int(item)/141 for item in locs]
 ax.set_xticks(locs, labels)
-ax.set_xlabel('$x/λ$')
+ax.set_xlabel('$x/λ$ [-]')
 
 ax.set_yticks(locs, labels)
-ax.set_ylabel('$y/λ$')
+ax.set_ylabel('$y/λ$ [-]')
 ax.set_xlim(-r, r)
 ax.set_ylim(-r,r)
 
