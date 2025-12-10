@@ -26,6 +26,8 @@ pf = pyemu.utils.PstFrom(OrgDir,PestDir, remove_existing=True,spatial_reference=
 #Fix inputfiles
 for n in [1,2,3]:
     fix_k(PestDir, f'pomp.npf_k_layer{n}.txt')
+    fix_k(PestDir, f'pomp.sto_ss_layer{n}.txt')
+
 
 #Pilot point locations and settings
 SL = int(np.sqrt(20000))
