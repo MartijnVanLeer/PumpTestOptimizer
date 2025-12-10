@@ -14,7 +14,7 @@ sim = flopy.mf6.MFSimulation.load(sim_ws=os.path.join('..', 'ws'), lazy_io=True,
 gwf = sim.get_model('pomp')
 aq_reals = zonedf.copy()
 ## Generate random conductivity field(s) within zone
-n = 10
+n = 4
 len_scales = [70,141,282]
 mean = 10/400/24
 logvar = 1
